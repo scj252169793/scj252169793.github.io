@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:200px;
+				height:200px;
+				background: url(pic.jpg) no-repeat;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var box = document.getElementById("box");
+				box.onmousedown = function(ev){
+					var disX = ev.clientX - box.offsetLeft;
+					var disY = ev.clientY - box.offsetTop;
+					document.onmousemove = function(ev){
+						var X = ev.clientX - disX;
+						var Y = ev.clientY - disY;
+						//判断上下左右边界
+						if(X <= 50) X = 0;
+						if(Y <= 50) Y = 0;
+						if(X >= document.documentElement.clientWidth - box.offsetWidth - 50){
+							X = document.documentElement.clientWidth - box.offsetWidth;
+						}
+						if(Y >= document.documentElement.clientHeight - box.offsetHeight - 50){
+							Y = document.documentElement.clientHeight - box.offsetHeight
+						}
+						box.style.left = X + "px";
+						box.style.top = Y + "px";
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					//document.onmouseup = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id ="box"></div>
+	</body>
+</html>
