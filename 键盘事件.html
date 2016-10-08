@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				overflow: hidden;
+			}
+			#box{
+				width:200px;
+				height:200px;
+				background: red;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+		<script>
+			//封装函数 获得可视区宽高
+			function fn(){
+				return{
+					//获得可视区宽度
+					W:document.documentElement.clientWidth,
+					//获得可视区高度
+					H:document.documentElement.clientHeight
+				}
+			}
+			window.onload = function(){
+				var box = document.getElementById("box");
+				obj = {};
+				//键盘按下
+				document.onkeydown = function(ev){
+					obj[ev.keyCode]  =true;
+				}
+				//键盘抬起
+				document.onkeyup = function(ev){
+					obj[ev.keyCode]  =false;
+				}
+				setInterval(function (){
+					//判断最左边的边界
+					if(box.offsetLeft <= 0){
+						box.style.left = 0;
+					}else{
+						//判断哪个键
+						if( obj[37] ){
+							box.style.left = box.offsetLeft -5 + "px";
+						}
+					}
+					//判断最上面的边界
+					if(box.offsetTop <= 0){
+						box.style.top = 0;
+					}else{
+						//判断哪个键
+						if( obj[38] ){
+							box.style.top = box.offsetTop -5 + "px";
+						}
+					}
+					//判断最右边的边界
+					if(box.offsetLeft >= fn().W - box.offsetWidth){
+						box.style.left = fn().W - box.offsetWidth;
+					}else{
+						//判断哪个键
+						if( obj[39] ){
+							box.style.left = box.offsetLeft +5 + "px";
+						}
+					}
+					//判断最下边的边界
+					if(box.offsetTop >= fn().H - box.offsetHeight){
+						box.style.left = fn().H - box.offsetHeight;
+					}else{
+						//判断哪个键
+						if( obj[40] ){
+							box.style.top = box.offsetTop +5 + "px";
+						}
+					}	
+				},16)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
