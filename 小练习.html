@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		a{
+			text-decoration:none;
+			font:12px/32px "微软雅黑";
+			color:#fff;
+			width:32px;
+			height:32px;
+			display: inline-block;
+			text-align: center;
+			background: #efefef;
+		}
+		a:hover{
+			background: orange;
+		}
+			#box{
+				width:735px;
+				height:420px;
+				background: #efefef;
+				position:relative;
+			}
+			#set{
+				/*width:410px;
+				height:420px;*/
+			}
+			#set p{
+				font:bold 24px/74px "微软雅黑";
+				color:#000;
+				text-indent:1em;
+				cursor:pointer;
+			}
+			#set p span{
+				font:bold 14px/40px "微软雅黑";
+				color:#fff;
+				display: inline-block;
+				width:100px;
+				height:40px;
+				background: red;
+			}
+			#content{
+				width:100px;
+				height:100px;
+				border:10px solid #393129;
+				margin:6px 0 0 25px;
+				background: #fff;
+			}
+			#transparent{
+				width:100%;
+				height:100%;
+				background: #000;
+				opacity:.5;
+				position:absolute;
+				top:0;
+				left:0;
+				display: none;
+			}
+			#menu{
+				width:266px;
+				height:192px;
+				border:20px solid #9c949c;
+				position:absolute;
+				top:150px;
+				left:370px;
+				z-index:3;
+				padding-left:34px;
+				padding-top:8px;
+				display: none;
+				background: #fff;
+			}
+			#red{
+				background: aquamarine;
+			}
+			#yellow{
+				background: orange;
+			}
+			#blue{
+				background: orchid;
+			}
+			.margin{
+				margin-top:8px;
+			}
+			#width,
+			#height{
+				margin-left:16px;
+			}
+			#width a,
+			#height a{
+				color:#847b84;
+			}
+			#button{
+				margin-left:56px;
+				margin-top:14px;
+			}
+			#button a{
+				width:60px;
+				height:30px;
+				background: #002952;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="set">
+				<p>请为下面的DIV设置样式：<span id="bnt">点击设置</span></p>
+				<div id="content"></div>
+			</div>
+			<div id="transparent"></div>
+			<div id="menu">
+				<div id="colour" class="margin">
+					<span>请选择背景颜色：</span>
+					<a href="#" id="red">红</a>
+					<a href="#" id="yellow">黄</a>
+					<a href="#" id="blue">蓝</a>
+				</div>
+				<div id="width" class="margin">
+					<span>请选择宽(px)：</span>
+					<a href="#" id="wTwo">200</a>
+					<a href="#" id="wThree">250</a>
+					<a href="#" id="wFour">300</a>
+				</div>
+				<div id="height" class="margin">
+					<span>请选择高(px)：</span>
+					<a href="#" id="yTwo">200</a>
+					<a href="#" id="yThree">250</a>
+					<a href="#" id="yFour">300</a>
+				</div>
+				<div id="button" class="margin">
+					<a href="#" id="reset">重置</a>
+					<a href="#" id="ensure">确定</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			var bnt = document.getElementById("bnt");
+			var transparent = document.getElementById("transparent");
+			var menu = document.getElementById("menu");
+			
+			var content = document.getElementById("content");
+			var red = document.getElementById("red");
+			var yellow = document.getElementById("yellow");
+			var blue = document.getElementById("blue");
+			
+			var wTwo = document.getElementById("wTwo");
+			var wThree = document.getElementById("wThree");
+			var wFour = document.getElementById("wFour");
+			
+			var yTwo = document.getElementById("yTwo");
+			var yThree = document.getElementById("yThree");
+			var yFour = document.getElementById("yFour");
+			
+			var reset = document.getElementById("reset");
+			var ensure = document.getElementById("ensure");
+			
+			bnt.onclick = function(){
+				transparent.style.display = "block";
+				menu.style.display = "block";
+			}
+			
+			red.onclick = function(){
+				content.style.background = "red";
+				yellow.style.background = "orange";
+				red.style.background = "red";
+				blue.style.background = "orchid"
+			}
+			yellow.onclick = function(){
+				content.style.background = "yellow";
+				yellow.style.background = "yellow";
+				red.style.background = "aquamarine";
+				blue.style.background = "orchid"
+			}
+			blue.onclick = function(){
+				content.style.background = "blue";
+				yellow.style.background = "orange";
+				red.style.background = "aquamarine";
+				blue.style.background = "blue"
+			}
+			
+			wTwo.onclick = function(){
+				content.style.width = "200px";
+			}
+			wThree.onclick = function(){
+				content.style.width = "250px";
+			}
+			wFour.onclick = function(){
+				content.style.width = "300px";
+			}
+			
+			yTwo.onclick = function(){
+				content.style.height = "200px";
+			}
+			yThree.onclick = function(){
+				content.style.height = "250px";
+			}
+			yFour.onclick = function(){
+				content.style.height = "300px";
+			}
+			
+			reset.onclick = function(){
+				content.style.width = "100px";
+				content.style.height = "100px";
+				content.style.background = "#fff";
+			}
+			ensure.onclick = function(){
+				transparent.style.display = "none";
+				menu.style.display = "none";
+			}
+		</script>
+	</body>
+</html>
