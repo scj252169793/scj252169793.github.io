@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .wrapper{
+            width:1000px;
+            height:600px;
+            /*background:#eee;*/
+            margin:20px auto;
+             /*景深   定义3D的立体效果*/
+            perspective: 1000px;
+            /*设置3D动画*/
+            -webkit-transform-style: preserve-3d;  /*兼容谷歌*/
+            -moz-transform-style: preserve-3d;		/*兼容火狐*/	
+            -ms-transform-style: preserve-3d;		/*兼容IE*/
+            transform-style: preserve-3d;
+            text-align: center;
+            /*添加延迟效果  所有的属性  匀速  时间*/
+            transition: all linear .7s;
+            position:relative;
+        }
+        .box{
+        	/*设置3D动画*/
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:200px;
+            left:400px;
+            /*添加延迟效果  所有的属性  匀速  时间*/
+            transition: all linear .7s;
+            /*调用了关键帧的scaleWidth  时间  匀速  无限次*/
+            animation:scaleWidth 10s linear  infinite ;
+        }
+        /*关键帧   这个盒子旋转*/
+        @keyframes scaleWidth{
+        	/*设置旋转元素的基点位置*/
+            0%{
+            	transform-origin:center;
+            	transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+            	}
+            100%{
+            	transform-origin:center;
+            	transform: rotateZ(-360deg) rotateX(-360deg) rotateY(-360deg);
+            	}
+        }
+        .box div{
+            width:198px;
+            height:198px;
+            text-align:center;
+            line-height: 200px;
+            font-size:50px;
+            position: absolute;
+            /*opacity: .2;*/
+           /*调用了关键帧的  cwidth  匀速  时间 */
+            animation:cwidth linear 10s ;
+            overflow: hidden;
+        }
+        /*关键帧   改变div的宽高和透明度*/
+        @keyframes cwidth{
+           0%{
+           		width:0;
+	            height:0;
+	            opacity: .1;
+            }
+           100%{
+	           	width:198px;
+	            height:198px;
+	            opacity: 1
+            } 
+        }
+        .box div span{
+            display: block;
+            width: 62px;
+            height:62px;
+            border:1px solid #000;
+            margin:1px;
+            float: left;
+        }
+        .wrapper .box div:nth-of-type(1){
+            left:0;
+            top:-200px;
+            /*设置旋转元素的基点位置*/
+            transform-origin: bottom;
+            transform:rotateX(90deg);
+        }
+        .wrapper .box div:nth-of-type(1) span{
+            background:red;
+        }
+        .wrapper .box div:nth-of-type(2){
+            left:0;
+            top:0px;
+            transform: translateZ(0px);
+        }
+        .wrapper .box div:nth-of-type(2) span{
+            background:yellow;
+        }
+        .wrapper .box div:nth-of-type(3){
+            left:0;
+            top:200px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        .wrapper .box div:nth-of-type(3) span{
+            background:green;
+        }
+        .wrapper .box div:nth-of-type(4){
+            left:-200px;
+            top:0px;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+        .wrapper .box div:nth-of-type(4) span{
+            background:deeppink;
+        }
+        .wrapper .box div:nth-of-type(5){
+            left:200px;
+            top:0px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+        .wrapper .box div:nth-of-type(5) span{
+            background:cyan;
+        }
+        .wrapper .box div:nth-of-type(6){
+            left:0px;
+            top:0px;
+            transform: translateZ(-200px)
+        }
+        .wrapper .box div:nth-of-type(6) span{
+            background:purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>  
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+
+    </script>
+</body>
+</html>
+
