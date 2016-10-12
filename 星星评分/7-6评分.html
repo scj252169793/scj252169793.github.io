@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:1400px;
+				height:200px;
+				margin: 100px auto;
+				position:relative;
+			}
+			#box span{
+				font:bold 50px/0 "微软雅黑";
+				color:#000;
+				position:relative;
+				top:-35px;
+				left:0;
+			}
+			#box img{
+				width:100px;
+				height:100px;
+			}
+			#box p{
+				font:bold 50px/0 "微软雅黑";
+				color:#000;
+				position:absolute;
+				top:-10px;
+				left:800px;
+				display: none;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var aImg = document.getElementsByTagName("img");
+				var aP = document.getElementsByTagName("p");
+				var num = -1;
+				//for循环
+				for(var i = 0; i < aImg.length; i++){
+					aImg[i].index = i;
+					//移入aImg[i]切换图片
+					aImg[i].onmouseover = function(){
+						//aP[this.index].style.display = "block";
+						for(var z = 0; z < aImg.length; z++){
+							aImg[z].src = "3.png";
+						}
+							 //判断切换图片
+							 if( this.index < 2){
+							 	//for循环
+							 	for(var n = 0; n <= this.index; n++){
+                                 aImg[n].src = "1.png";
+                                }
+                            }else{
+                            	//for循环
+                            	for(var n = 0; n <= this.index; n++){
+                                	aImg[n].src = "2.png";
+                                }
+                            }
+                            for(var v = 0; v < aP.length; v++){
+                            	aP[v].style.display = "none";
+                            }
+                            aP[this.index].style.display = "block";
+					}
+					//点击aImg[i]切换图片
+					aImg[i].onclick = function(){
+						//alert(1);
+						num = this.index;
+//						for(var x = 0; x < aImg.index; x++){
+//							aImg[x].src = "3.png";
+//						}
+						//判断切换图片
+						if( this.index < 2){
+								//for循环
+							 	for(var n = 0; n <= this.index; n++){
+                                 aImg[n].src = "1.png";
+                                }
+                            }else{
+                            	//for循环
+                            	for(var n = 0; n <= this.index; n++){
+                                	aImg[n].src = "2.png";
+                                }
+                            }
+                            //for循环
+                           for(var y = 0; y < this.index; y++) {
+                           		aP[y].style.display = "none";
+                           }
+                           aP[this.index].style.display = "block";
+					}
+					//移出aImg[i]
+					aImg[i].onmouseout = function(){
+						//for循环切换图片
+						for(var m = 0; m < aImg.length; m++){
+							aImg[m].src = "3.png";
+							aP[m].style.display = "none";
+							
+						}
+						//判断
+						if(num<2){
+							//循环切换图片
+                        	for(var n = 0; n <= num; n++){
+                            	aImg[n].src = "1.png";
+                            }	
+                        }else{
+                        	//循环切换图片
+                        	for(var n = 0; n <= num; n++){
+                            	aImg[n].src = "2.png";
+                            }
+                        }
+                        //判断
+                        if(num != 0-1){
+                        	aP[num].style.display = "block";
+                        }
+                        
+				   }
+					
+					
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<span>总体评分：</span>
+			<img src="3.png" /> 
+			<img src="3.png" /> 
+			<img src="3.png" /> 
+			<img src="3.png" /> 
+			<img src="3.png" />
+			<p>很差</p>
+			<p>较差</p>
+			<p>还行</p>
+			<p>推荐</p>
+			<p>力荐</p>
+		</div>
+	</body>
+</html>
