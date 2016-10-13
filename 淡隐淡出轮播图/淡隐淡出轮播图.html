@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto 0;
+            width: 520px;
+            height: 280px;
+            border: 1px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        #list {
+            list-style: none;
+            position: relative;
+        }
+        li {
+            position:absolute;
+            top:0;
+            left:0;
+            opacity: 0;
+        }
+        li:nth-child(1){
+        	opacity: 1;
+        	z-index: 3;
+        }
+        img {
+            display: block;
+        }
+
+        #prev, #next {
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background: #000000;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 60px;
+            text-align: center;
+            top: 110px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        #prev {
+            left: 0;
+        }
+        #next {
+            right: 0;
+        }
+    </style>
+    <script src="tools.js"></script>
+    <script src="MTween.js"></script>
+    <script>
+    	window.onload = function(){
+	    	var aLi = $("li",$("#list"));
+	    	var prev = $("#prev");
+	    	var next = $("#next");
+	    	var num = 0;
+	    	var sign = 0;
+	    	var keyer = null;
+	    	//设置有名函数
+	    	function fn(){
+	    		//设置定时器
+	    		keyer = setInterval(function(){
+	    			num++;
+	    			if(num == aLi.length){
+	    				num = 0;
+	    			}
+	    			//调用有名函数传参(实参)
+	    			MTween(aLi[sign],"opacity",1000,0);
+		    		aLi[sign].style["z-index"] = 1;
+		    		aLi[num].style["z-index"] = 3;
+		    		//调用有名函数传参(实参)
+		    		MTween(aLi[num],"opacity",1000,1);
+		    		sign = num;
+	    		},1800);
+	    	}
+	    	//调用有名函数
+	    	fn();
+	    	//设置有名函数(形参)
+	    	function fn1(obj){
+	    		obj.onmouseover = function(){
+	    		clearInterval(keyer);
+	    		}
+		    	obj.onmouseout = function(){
+		    		fn();
+		    	}
+	    	}
+	    	//调用有名函数传参(实参)
+	    	fn1(next);
+	    	fn1(prev);
+	    	//点击next更改图片的层级和透明度
+	    	next.onclick = function(){
+	    		if(aLi[num].timer){
+	    			return;
+	    		}
+	    		num++;
+	    		if(num == aLi.length){
+	    			num = 0;
+	    		}
+	    		//调用有名函数传参(实参)
+	    		MTween(aLi[sign],"opacity",1000,0);
+	    		aLi[sign].style["z-index"] = 1;
+	    		aLi[num].style["z-index"] = 3;
+	    		//调用有名函数传参(实参)
+	    		MTween(aLi[num],"opacity",1000,1);
+	    		sign = num;
+	    	}
+	    	//点击prev更改图片的层级和透明度
+	    	prev.onclick = function(){
+	    		if(aLi[num].timer){
+	    			return;
+	    		}
+	    		num--;
+	    		if(num == 0 - 1){
+	    			num = aLi.length-1;
+	    		}
+	    		MTween(aLi[sign],"opacity",1000,0);
+	    		aLi[sign].style["z-index"] = 1;
+	    		aLi[num].style["z-index"] = 3;
+	    		MTween(aLi[num],"opacity",1000,1);
+	    		sign = num;
+	    	}
+	    }
+    </script>
+	</head>
+	<body>
+		<div id="box">
+        <ul id="list">
+            <li><img src="images1/1.jpg" ></li>
+            <li><img src="images1/2.jpg" ></li>
+            <li><img src="images1/3.jpg" ></li>
+            <li><img src="images1/4.jpg" ></li>
+            <li><img src="images1/5.jpg" ></li>
+        </ul>
+        <span id="prev"> < </span>
+        <span id="next"> > </span>
+    </div>
+	</body>
+</html>
