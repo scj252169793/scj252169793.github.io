@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:600px;
+				height:50px;
+				margin:300px auto;
+				border:5px solid #000;
+				position:relative;
+			}
+			#aP{
+				width:0px;
+				height:50px;
+				background: red;
+				margin:0;
+				position:relative;
+				z-index: 3;
+				opacity: 0;
+			}
+			#aDiv{
+				width:600px;
+				height:50px;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#aDiv span{
+				font:bold 30px/50px "微软雅黑";
+				color:#000;
+				padding-left:10px;
+				position:relative;
+				top:0;
+				left:0;
+				opacity: 1;
+			}
+		</style>
+		<script src="tools.js"></script>
+		<script src="MTween3.js"></script>
+		<script>
+			window.onload = function(){
+				var aP = $("#aP");
+				var aSpan = $("span");
+				//设置开关
+				var onOff = false;
+				//点击document让改变aSpan的top值和透明度，改变aP的宽度和透明度
+				document.onclick = function(){
+					//判断开关，防止多次点击
+					if( onOff ) return;
+					onOff = true;
+					//调用MTween让aP运动
+					MTween(aP,{opacity:1,width:600},1000,"linear",function(){
+						MTween(aP,{opacity:0},1000,"linear",function(){
+							aP.style.width = 0;
+						});
+					});	
+					for(var i = 0; i < aSpan.length; i++){
+						//调用有名函数传参
+						fn(i);
+					}
+				}
+				//设置有名函数
+				function fn(i){
+					//设置延时器
+					setTimeout(function(){
+						//调用MTween让aSpan运动
+						MTween(aSpan[i],{opacity:0,top:-200},500,"linear",function(){
+							//判断更改aSpan的top值和透明度
+							if(i >= aSpan.length-1){
+								for(var j = 0; j < aSpan.length; j++){
+									aSpan[j].style.top = 0;
+									MTween(aSpan[j],{opacity:1},500);
+								}
+								onOff = false;
+							}	
+						});
+					},i*100)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<section id="box">
+			<p id="aP"></p>
+			<div id="aDiv">
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+				<span>+1</span>
+			</div>
+		</section>
+	</body>
+</html>
