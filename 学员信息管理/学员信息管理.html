@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style>
+		 	body{
+		 		-webkit-user-select: none;
+		 	}
+	        td {
+	           text-align: center;
+	        }
+    	</style>
+    	<script src="tools.js"></script>
+    	<script>
+	        var data = [
+	            {
+	                 'id' : 1,
+	                'username' : 'LEO',
+	                'age' : 36,
+	                'sex' : '男'
+	            },
+	            {
+	                'id' : 2,
+	                'username' : 'MOMO',
+	                'age' : 16,
+	                'sex' : '男'
+	            },
+	            {
+	                'id' : 3,
+	                'username' : 'DUODUO',
+	                'age' : 29,
+	                'sex' : '男'
+	            },
+	            {
+	                'id' : 4,
+	                'username' : '勇升',
+	                'age' : 46,
+	                'sex' : '男'
+	            },
+	            {
+	                'id' : 5,
+	                'username' : '小美',
+	                'age' : 40,
+	                'sex' : '女'
+	            }
+	        ];
+	    </script>
+	    <script>
+	    	window.onload = function(){
+	    		var aTable = $("#aTable");
+	    		var aTbody = aTable.tBodies[0];
+	    		fn();
+	    		//封装添加结构，勾选框和删除事件处理的函数
+	    		function fn(){
+	    			for(var i = 0; i < data.length; i++){
+		    			var aTr = jiegou(data[i]);
+		    			//把tr追加到tbody里
+		    			aTbody.appendChild(aTr);
+		    			//调用函数
+		    			duoxuan(aTr);
+	    			}
+	    		}
+	    		//封装生成结构的函数
+	    		function jiegou(obj){
+	    			//生成tr
+	    			var tr = document.createElement("tr");
+	    			var checked = obj.selected ? "checked" : "";
+	    			//拼接字符串
+	    			tr.innerHTML = '<td>'
+                   				 +'<input '+checked+' type="checkbox"/>'
+			                +'</td>'
+			                +'<td>'+obj.id+'</td>'
+			                +'<td>'+obj.username+'</td>'
+			                +'<td>'+obj.age+'</td>'
+			                +'<td>'+obj.sex+'</td>'
+			                +'<td>'
+			                    +'<a class="delectBtn" href="javascript:;">删除</a>'
+			                +'</td>';
+					//设置行间属性
+			        tr.setAttribute("data-user-id",obj.id);
+        			return tr;    
+	    		}
+	    		var add = $("#add");
+	    		var name = $("#name");
+	    		var age = $("#age");
+	    		var sex = $("#sex");
+	    		var num = data.length;
+	    		//点击添加按钮
+	    		add.onclick = function(){
+	    			//判断输入框是否输入内容
+	    			if(name.value == "" || age.value == ""){
+	    				alert("请输入内容");
+	    				return;
+	    			}
+	    			num++;
+	    			//创建一个对象
+	    			var newData = {
+	    				'id':num,
+	    				'username' : name.value,
+			            'age' : age.value,
+			            'sex' : sex.value
+	    			}
+	    			//把新创建的对象添加到data数组里
+	    			data.push(newData);
+	    			//是否点击过排序按钮
+			        if( ageSort.isClick ){
+			            if( !onOff ){
+			                //从小到大排序
+			                data.sort(function (a,b){
+			                    return a.age - b.age;    
+			                });
+			            }else{
+			            	//从大到小排序
+			                data.sort(function (a,b){
+			                    return b.age - a.age;    
+			                }); 
+			            }
+			            //清空aTbody
+			            aTbody.innerHTML = "";
+			            //调用函数
+			            fn();
+			
+			        }else{
+			        	var newJieGou = jiegou(newData)      
+				        //调用函数追加到aTbody里
+	            		aTbody.appendChild(newJieGou);
+	            		//调用函数
+	            		duoxuan(newJieGou);
+	            		
+			        }
+            		//只要新添加一条，全选设置false
+			        checkAll.checked = false;
+			        checkAll.disabled = false;
+	    		}
+	    		var checkAll = $("#checkAll");
+	    		var aCheck = $("input",aTbody);
+	    		//点击全选
+	    		checkAll.onclick = function(){
+	    			for(var i = 0; i < aCheck.length; i++){
+	    				//让所有的勾选框都勾上
+	    				aCheck[i].checked = this.checked;
+	    				data[i].selected = this.checked;
+	    			}
+	    		}
+	    		//获得选中的函数封装
+	    		function xuanzhong(){
+	    			var arr = [];
+	    			for(var i = 0; i < aCheck.length; i++){
+	    				//判断有没有被勾选
+	    				if(aCheck[i].checked){
+	    					//把tr添加到arr数组里
+	    					arr.push(aCheck[i].parentNode.parentNode)
+	    				}
+	    			}
+	    			return arr;
+	    		}
+	    		//点击每个勾选框和单个删除的函数封装
+	    		function duoxuan(tr){
+	    			var chenckBtn = $("input",tr)[0];
+	    			var delectBtn = $(".delectBtn",tr)[0];
+	    			//点击多选框
+	    			chenckBtn.onclick = function(){
+	    				//获取tr的行间属性
+	    				var userId = this.parentNode.parentNode.dataset.userId;
+	    				//判断有没有勾选
+	    				if(this.checked){
+	    					//判断有没有全部勾选
+	    					if(xuanzhong().length == aCheck.length){
+	    						//勾选全选
+	    						checkAll.checked = true; 
+	    					}
+	    					for(var i = 0; i < data.length; i++){
+		    					//判断id是否相同
+		    					if(data[i].id == userId){
+		    						//给对应的多选框勾选上
+		    						data[i].selected = true;
+	                        		break;
+		    					}
+    						}
+	    				}else{
+	    					checkAll.checked = false;
+	    					for(var i = 0; i < data.length; i++){
+		    					//判断id是否相同
+		    					if(data[i].id == userId){
+		    						//给对应的多选框取消勾选
+		    						data[i].selected = false;
+	                        		break;
+		    					}
+    						}
+	    				}	
+	    			}
+	    			//点击删除按钮
+	    			delectBtn.onclick = function(){
+	    				var parents = this.parentNode.parentNode;
+	    				//删除结构
+	    				aTbody.removeChild(parents);
+	    				var userId = parents.dataset.userId;
+	    				//调用函数删除对应的数据
+	    				idshanchu(data,userId);
+	    				//判断aCheck的长度
+	    				if(aCheck.length){
+	    					if(aCheck.length == xuanzhong().length){
+	    						checkAll.checked = true;
+	    					}
+	    				}else{
+	    					checkAll.checked = false;
+                			checkAll.disabled = true;
+	    				}
+	    			}
+	    		}
+	    		//封装通过ID删除数据的函数
+	    		function idshanchu(data,id){
+	    			for( var i = 0; i < data.length; i++ ){
+	    				//判断id是否相同
+            			if( id == data[i].id ){
+            				//删除指定的数据
+                			data.splice(i,1);
+                			break;
+            			}
+        			}   
+	    		}
+			    //批量删除
+			    var delectAll = $("#delectAll");
+			    //点击delectAll
+			    delectAll.onclick = function (){
+			        var selectArr = xuanzhong(); 
+			        for( var i = 0; i < data.length; i++ ){
+			            for( var j = 0; j < selectArr.length; j++ ){
+			            	//判断id
+			                if( selectArr[j].dataset.userId == data[i].id ){
+			                	//删除指定的数据
+			                    data.splice(i,1);
+			                    i--;
+			                    break;
+			                }
+			            }
+			        }
+			        for( var i = 0; i < selectArr.length; i++ ){
+			        	//删除结构
+			            aTbody.removeChild(selectArr[i]);
+			        }
+			        checkAll.checked = false;
+					//判断aCheck的长度是否等于0
+			        if( aCheck.length === 0 ){
+			           checkAll.disabled = true; 
+			        }
+			
+			    };
+			    var ageSort = $("#ageSort");
+				//设置开关
+			    var onOff = true;
+			
+			    ageSort.onclick = function (){
+			        if( onOff ){
+			            //从小到大排序
+			            data.sort(function (a,b){
+			                return a.age - b.age;    
+			            });
+			
+			            this.value = "年龄从大到小";
+			        }else{
+			        	 //从大到小排序
+			            data.sort(function (a,b){
+			                return b.age - a.age;    
+			            });
+			            this.value = "年龄从小到大";
+			        }
+			        //清空aTbody
+			        aTbody.innerHTML = "";
+			        //调用函数
+			        fn();
+			        onOff = !onOff;
+			        //点过了，添加属性记录已经点击过了
+			        this.isClick = true;
+			    };
+	    	}
+	    </script>
+	</head>
+	<body>
+		<form action="" name="form">
+		    <p>
+		        姓名:<input type="text" id="name" name="username"/>
+		    </p>
+		    <p>
+		        年龄:<input type="text" id="age" name="age"/>
+		    </p>
+		    <p>
+		        性别: <select name="sex" id="sex">
+		            <option value=" 男 ">男</option>
+		            <option value="女">女</option>
+		        </select>
+		    </p>
+		    <p>
+		        <input type="button" id="add" value="添加" name="add"/>
+		    </p>
+		</form>
+	    <input type="button" id="delectAll" value="批量删除"  class="btn"> 
+	    <input type="button" value="年龄从小到大" id="ageSort"  class="btn"> 
+	    <table id="aTable" width="100%" border="1">
+	        <thead>
+		        <tr>
+		            <th>
+		                <input id="checkAll" type="checkbox" /> 全选
+		            </th>
+		            <th>ID</th>
+		            <th>姓名</th>
+		            <th>年龄</th>
+		            <th>性别</th>
+		            <th>操作</th>
+		        </tr>
+	        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>LEO</td>
+                <td>36</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> -->
+        </tbody>
+	</body>
+</html>
