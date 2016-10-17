@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+	body{
+	 		-webkit-user-select: none;
+	 	}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    
+    .clearfix {
+        zoom: 1;
+    }
+    
+    #main {
+        width: 800px;
+        height: 800px;
+        border: 1px dashed #000;
+        margin: 0 auto;
+    }
+    
+    #pageBox span,
+    #pageBox a {
+        width: 50px;
+        height: 20px;
+        text-align: center;
+        background-color: #666;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    #pageBox span {
+        display: inline-block;
+    }
+    
+    #pageBox span.actColor {
+        background-color: red;
+    }
+    
+    #pageBox a {
+        float: left;
+        color: #fff;
+    }
+    
+    #pages {
+        float: left;
+    }
+    
+    #info .block span {
+        padding: 20px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    #info .gays {
+        padding: 20px;
+        color: #666;
+    }
+    
+    #info .gays a {
+        font-size: 12px;
+        padding: 10px;
+        color: #328fbe;
+    }
+    
+    #leftBox {
+        width: 100px;
+        float: left;
+        text-align: center;
+    }
+    
+    #leftBox a {
+        display: block;
+        line-height: 50px;
+        background-color: #ccc;
+        margin-bottom: 10px;
+    }
+    
+    #leftBox a.red {
+        background-color: red;
+        color: #fff;
+    }
+    
+    #rightBox {
+        width: 700px;
+        float: right;
+    }
+    
+    #rightBox h3 {
+        line-height: 50px;
+        background-color: yellow;
+        width: 100px;
+        text-align: center;
+    }
+    </style>
+    <script src="data.js"></script>
+    <script src="getTag.js"></script>
+    <script>
+    	//封装函数
+    	function fn(){
+    		//获取查询信息
+    		var search = window.location.search;
+    		//获取锚点信息
+			var hash = window.location.hash;
+    		!search ? search = "world" : search = search.slice(1);
+    		!hash ? hash = 1 : hash = hash.slice(1);
+    		return{
+    			search,
+    			hash
+    		}
+    	}
+    	window.onload = function(){
+    		var leftBox = document.getElementById("leftBox");
+    		var btn = leftBox.getElementsByTagName("a");
+    		var title = document.getElementsByTagName("h3")[0];
+    		var num = 0;
+    		//调用函数
+    		fn();
+    		fn().search === "world" ? num = 0 : num = 1;
+				btn[num].style.background = "red";
+				title.innerHTML = btn[num].innerHTML;
+				var dataAll = data[fn().search];
+				var info = document.getElementById("info");
+				var pages = document.getElementById("pages");
+				var aSpan = pages.getElementsByTagName("span");
+				//调用函数
+				fun(dataAll,fn().hash);
+				//封装函数
+				function fun(dataAll,hash){
+					for(var i = (hash-1)*5; i < 5*hash; i++){
+						if(i == dataAll.length){
+							break;
+						}
+						var arr = "";
+						var aDiv = document.createElement("div");
+						//拼接字符串
+						arr += '<p class="block"><span>'+dataAll[i].num
+							+'</span><span>职位需求：'+dataAll[i].job
+							+'</span><span>需求人数：'+dataAll[i].pNum
+							+'</span><span>'+dataAll[i].data
+							+'</span></p><p class="gays">岗位要求：1)helpdesk支持；2)熟悉计算机软、硬件及网络维护；3)有相关工作经验，态度端正；4)有一定的服务意识</p>'+dataAll[i].ask
+							+'<a href = "javascript:void(0);">【查看详情】</a>';
+							aDiv.innerHTML = arr;
+							info.appendChild(aDiv);
+					}
+					for(var i = 0; i<Math.ceil(dataAll.length/5); i++){
+						pages.innerHTML += "<span>"+(i+1)+"</span>";
+					}
+					aSpan[hash-1].style.background = "red";
+					for(var j = 0; j < aSpan.length; j++){
+						//点击aSpan
+						aSpan[j].onclick = function(){
+							//清空pages和info的内容
+							pages.innerHTML = "";
+							info.innerHTML = "";
+							window.location.hash = parseInt(this.innerHTML);
+							//调用函数
+							fn();
+							fun(dataAll,fn().hash);
+						}
+					}
+					var prev = document.getElementById("prev");
+					var next = document.getElementById("next");
+					//点击上一页
+					prev.onclick = function(){
+						//清空pages和info的内容
+						pages.innerHTML = "";
+						info.innerHTML = "";
+						//记录当前的下标
+						var n = fn().hash;
+						n--;
+						n < 1 ? n = 1 : "";
+						window.location.hash = n;
+						//调用函数
+						fun(dataAll,fn().hash);
+					}
+					//点击下一页
+					next.onclick = function(){
+						//清空pages和info的内容
+						pages.innerHTML = "";
+						info.innerHTML = "";
+						//记录当前的下标
+						var m = fn().hash;
+						m++;
+						m > Math.ceil(dataAll.length/5)? m = fn().hash:"";
+						window.location.hash = m;
+						//调用函数
+						fun(dataAll,fn().hash);
+					}
+				}
+    		}
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="leftBox">
+            <a href="?world">社会招聘</a>
+            <a href="?school">校园招聘</a>
+        </div>
+        <div id="rightBox">
+            <h3></h3>
+            <div id="info"></div>
+            <div id="pageBox" class="clearfix">
+                <a href="javascript:;" id="prev">prev</a>
+                <div id="pages"></div>
+                <a href="javascript:;" id="next">next</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
