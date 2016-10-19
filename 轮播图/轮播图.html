@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto 0;
+            width: 520px;
+            height: 280px;
+            border: 1px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        #list div{
+        	width:520px;
+        	height:0px;
+        	position:absolute;
+        	bottom:0px;
+        	left:0;
+        	background: skyblue;
+        	z-index: 10;
+        	font:bold 50px/50px "微软雅黑";
+        	color:#000;
+        	text-align: center;
+        }
+        #list {
+            list-style: none;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        li {
+            float:left;
+            position:relative;
+        }
+        img {
+            display: block;
+        }
+    </style>
+    <script src="tools.js"></script>
+    <script src="MTween1.js"></script>
+    <script>
+    	window.onload = function(){
+    		var list = $("#list");
+			var listLi = $("li",list);
+			var aDiv = $("div",list);
+			var box = $("#box");
+			//自动生成一张图片
+			list.innerHTML +="<li>"+listLi[0].innerHTML+"</li>";
+			//获取一个listLi的宽度
+			var num = parseInt(getComputedStyle(listLi[0]).width);
+			//获取listLi的长度
+			var len = listLi.length;
+			//获取list的宽度
+			list.style.width = num*len+"px";
+			var n = 0;
+			var isMouseOver = false;
+			//调用有名函数
+			moveUp();
+			//设置有名函数让aDiv上移
+			function moveUp(){
+				//调用MTween(运动)传参
+				MTween(aDiv[n],"height",800,50,"linear",function(){
+					//判断鼠标是否移入
+					if(isMouseOver) return;
+					//设置延时器
+					setTimeout(function(){
+						//调用有名函数让aDiv下移
+						moveDown();
+					},500);	
+				});
+			}
+			//设置有名函数让aDiv下移
+			function moveDown(){
+				//调用MTween(运动)传参
+				MTween(aDiv[n],"height",500,0,"linear",function(){
+					n++;
+					if(n == len){
+						list.style.left = 0;
+						n = 1;
+					}
+					//调用有名函数让图片切换
+					switchover();
+				});	
+			}
+			//图片切换
+			function switchover(){
+				var l = -n*num;
+				//调用MTween(运动)传参
+				MTween(list,"left",800,l,"linear",function(){
+					//调用有名函数让aDiv上移
+					moveUp();
+				});	
+			}
+			box.onmouseover = function(){
+				isMouseOver = true;
+				//clearInterval(timer);
+				moveUp()
+			}
+			box.onmouseout = function(){
+				isMouseOver = false;
+				moveDown();
+			}
+    	}
+    </script>
+	</head>
+	<body>
+		<div id="box">
+        <ul id="list">
+            <li><img src="images1/1.jpg" ><div>1</div></li>
+            <li><img src="images1/2.jpg" ><div>2</div></li>
+            <li><img src="images1/3.jpg" ><div>3</div></li>
+            <li><img src="images1/4.jpg" ><div>4</div></li>
+            <li><img src="images1/5.jpg" ><div>5</div></li>
+        </ul>
+    </div>
+	</body>
+</html>
