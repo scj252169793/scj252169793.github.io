@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto 0;
+            width: 520px;
+            height: 280px;
+            border: 1px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        #box div{
+        	width:20px;
+        	height:20px;
+        	/*border:2px solid #000;*/
+        	border-radius:20px;
+        	position:absolute;
+        	bottom:5px;
+        	left:150px;
+        	background: skyblue;
+        	z-index: 10;
+        }
+        #list {
+            list-style: none;
+            position:relative;
+        }
+        li {
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        img {
+            display: block;
+        }
+
+        #prev, #next {
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background: #000000;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 60px;
+            text-align: center;
+            top: 110px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        #prev {
+            left: 0;
+        }
+        #next {
+            right: 0;
+        }
+    </style>
+    <script src="tools.js"></script>
+    <script src="MTween1.js"></script>
+    <script>
+    	window.onload = function(){
+    		var list = $("#list");
+			var listLi = $("li",list);
+			var prev = $("#prev");
+			var next = $("#next");
+			var aDiv = $("div",$("#box"));
+			var num = parseInt(getComputedStyle(listLi[0]).width);
+			var len = listLi.length;
+			//初始化
+			list.style.width = num*len+"px";
+			for(var i = 1; i < len; i++){
+				listLi[i].style.left = num+"px";
+			}
+			aDiv[0].style.background = "red";
+			var n = 0;
+			var old = 0;
+			var keyer = null;
+			//设置有名函数
+			function fn(){
+				keyer = setInterval(function(){
+					n++;
+					if(n == len){
+						n = 0;
+					}
+					for(var i = 0; i < len; i++ ){
+						aDiv[i].style.background = "";
+						listLi[i].style.left = 0;
+					}
+					listLi[n].style.left =num+"px";
+					listLi[n].style["z-index"] = 3;
+					aDiv[n].style.background = "red";
+					list.style.left = 0;
+					MTween(list,"left",1000,-num,"linear",function(){
+						listLi[old].style.left =num+"px";
+						listLi[old].style["z-index"] = 2;
+						old = n;
+					});
+				},1500);
+			}
+			//调用有名函数
+			fn();
+			//设置有名函数(形参)
+			function fn1(obj){
+				obj.onmouseover = function(){
+					clearInterval(keyer);
+				}
+				obj.onmouseout = function(){
+					fn();
+				}
+			}
+			//调用有名函数(实参)
+			fn1(next);
+			fn1(prev);
+			//点击next
+			next.onclick = function(){
+				if(list.timer){
+					return;
+				}
+				n++;
+				if(n == len){
+					n = 0;
+				}
+				listLi[old].style.left =0;
+				aDiv[old].style.background = "";
+				listLi[n].style.left =num+"px";
+				listLi[n].style["z-index"] = 3;
+				aDiv[n].style.background = "red";
+				list.style.left = 0;
+				MTween(list,"left",1000,-num,"linear",function(){
+					listLi[old].style.left =num+"px";
+					listLi[old].style["z-index"] = 2;
+					old = n;
+				});
+			}
+			//点击prev
+			prev.onclick = function(){
+				if(list.timer){
+					return;
+				}
+				n--;
+				if(n == 0-1){
+					n = len-1;
+				}
+				listLi[old].style.left =0;
+				aDiv[old].style.background = "";
+				listLi[n].style.left =-num+"px";
+				listLi[n].style["z-index"] = 3;
+				aDiv[n].style.background = "red";
+				list.style.left = 0;
+				MTween(list,"left",1000,num,"linear",function(){
+					listLi[old].style.left =-num+"px";
+					listLi[old].style["z-index"] = 2;
+					old = n;
+				});
+			}
+			var l = 0;
+			for(var j = 0; j < aDiv.length; j++){
+				aDiv[j].index = j;
+				aDiv[j].onclick = function(){
+					if(list.timer){
+						return;
+					}
+					for(var s = 0; s < aDiv.length; s++){
+							listLi[s].style.left =0;
+							aDiv[s].style.background = "";
+						}
+					if(n < this.index){
+						n = this.index;
+						listLi[this.index].style.left =num+"px";
+						listLi[this.index].style["z-index"] = 3;
+						this.style.background = "red";
+						list.style.left = 0;
+						MTween(list,"left",1000,-num,"linear",function(){
+							listLi[old].style.left =num+"px";
+							listLi[old].style["z-index"] = 2;
+							old = n;
+						});
+					}else{
+						n = this.index;
+						listLi[this.index].style.left =-num+"px";
+						listLi[this.index].style["z-index"] = 3;
+						this.style.background = "red";
+						list.style.left = 0;
+						MTween(list,"left",1000,num,"linear",function(){
+							listLi[old].style.left =-num+"px";
+							listLi[old].style["z-index"] = 2;
+							old = n;
+				});
+					}
+					
+				}
+				aDiv[j].onmouseover = function(){
+					clearInterval(keyer);
+				}
+				aDiv[j].onmouseout = function(){
+					fn();
+				}
+			}
+    	}
+    </script>
+	</head>
+	<body>
+		<div id="box">
+        <ul id="list">
+            <li><img src="images1/1.jpg" ></li>
+            <li><img src="images1/2.jpg" ></li>
+            <li><img src="images1/3.jpg" ></li>
+            <li><img src="images1/4.jpg" ></li>
+            <li><img src="images1/5.jpg" ></li>
+        </ul>
+        <span id="prev"> < </span>
+        <span id="next"> > </span>
+        <div></div>
+        <div style="left:200px;"></div>
+        <div style="left:250px;"></div>
+        <div style="left:300px;"></div>
+        <div style="left:350px;"></div>
+    </div>
+	</body>
+</html>
