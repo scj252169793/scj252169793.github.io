@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		input,span,p{
+			padding: 0;
+			margin: 0;
+		}
+		input{
+			border: none;
+		}
+		#wrap{
+			overflow: hidden;
+			width:842px;
+			border: 10px solid #ccc;
+			padding: 10px;
+		}
+		.textTo{
+			float: left;
+			width: 350px;
+			height: 220px;
+		}
+		.btn{
+			float: left;
+			width: 120px;
+			height: 220px;
+			margin: 0 10px;
+		}
+		.textGet{
+			float: left;
+			width: 350px;
+			height: 220px;
+		}
+		#textTo{
+			width: 350px;
+			height: 220px;
+			background: #efefd6;
+			border: 1px dotted #000;
+		}
+		#btn{
+			width: 120px;
+			height: 40px;
+			background: #f76300;
+			color: #fff;
+			font-size: 20px;
+			line-height: 40px;
+		}
+		#num{
+			margin-top: 20px;
+			margin-left:40px;
+		}
+		.remin{
+			clear: both;
+			overflow: hidden;
+			margin-left: 20px;
+			margin-top: 30px;
+			-display: none;
+			opacity: 0;
+			transition:0.8s;
+		}
+		.remin span{
+			display:inline-block;
+			float:left;
+			width: 8px;
+			height: 10px;
+			background:#e7a521;
+			margin: 0 1px;
+		}
+		.remin .active{
+			background: #ff0000;
+		}
+		#textGet{
+			width: 350px;
+			height: 220px;
+			background: #63eff7;
+			border: 1px dotted #000;
+		}
+	</style>
+	<script src="tools.js"></script>
+	<script>
+		window.onload = function(){
+			var btn = $("#btn");
+			var textTo = $("#textTo"); 
+			var textGet = $("#textGet");
+			var remin = $("#remin"); 
+			var allSpan = $("span",remin);
+			var num = $("#num");
+			var timer = null;
+			btn.onclick = function (){
+				//当已经有定时器开启了，那么再次点击， 不往下执行
+				if( timer ) return;
+				var val = textTo.value;
+				//判断textTo.value是否有内容
+				if( val === "" ){
+					alert("请输入内容");
+				}else{
+					remin.style.opacity = 1;
+					var n = 0;
+					var m = textTo.value.length;
+					//设置定时器
+					timer = setInterval(function (){
+						n++;
+						textTo.value = val.slice(n);	
+						textGet.innerHTML = val.slice(0,n);
+						num.innerHTML = n+"/"+ m;
+						for( var i = 0; i < allSpan.length; i++ ){
+							allSpan[i].className = ""
+						};
+						allSpan[n%allSpan.length].className = "active";
+						if( n >= val.length ){
+							remin.style.opacity = 0;
+							//清楚定时器
+							clearInterval(timer);
+							//以便下一次还可以再次开启定时器
+							timer = null;
+						}
+					},30);
+				}
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<div id="wrap">
+		<div class="textTo">
+			<textarea name=""  id="textTo" cols="30" rows="10">习近平强调，当今世界正在发生深刻复杂的变化，我们党、国家、军队建设事业站在了新的历史起点上，需要全党全军全国各族人民同心同德、团结奋进。我们要充分认清加强军政军民团结的重要意义，发扬光大爱国拥军、爱民奉献优良传统，根据时代变化和工作要求，不断改进创新、与时俱进，全面提高新形势下双拥工作水平，发挥双拥工作联系军地军民的桥梁纽带作用，更好服务党和国家工作大局、国防和军队建设全局。</textarea>
+		</div>
+		<div class="btn">
+			<input type="button" value="把文字右移" id="btn" />
+			<p id="num">0/0</p>
+			<p id="remin" class="remin">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</p>
+		</div>
+		<div class="textGet"id="textGet">
+		</div>		
+	</div>
+	</body>
+</html>
