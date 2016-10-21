@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				background: #232323; color: #fff; font-family: "微软雅黑"}
+			img{
+				width: 150px;
+				height: 210px;
+				border: none;
+				vertical-align: top;
+			}
+			.box{
+				width: 1200px;
+				height: 210px;
+				margin: 100px auto;
+			}
+			ul li{
+				list-style: none;
+				vertical-align: top;
+				width: 150px;
+				height: 210px;
+				overflow: hidden;
+				float: left;
+				position: relative;
+			}
+			ul li p{
+				width: 150px;
+				height: 420px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		<script src="tools.js"></script>
+		<script src="MTween1.js"></script>
+		<script>
+		   //小于10 前面补个0
+			function addZero(n){
+				return n < 10 ? "0"+ n : n;
+			}
+			//获得当前的时间
+		    var d = new Date();
+		    var H = d.getHours();
+			var M = d.getMinutes();
+			var S = d.getSeconds();
+			var time = addZero(H)+":"+addZero(M)+":"+addZero(S);
+			window.onload = function(){
+				var aP = $("p",$("#list"));
+				//初始化
+				for(var i = 0; i < aP.length; i++){
+					var aImg = $("img",aP[i]);
+					if(time.charAt(i) !== ":"){
+						aImg[0].src = "img/"+time.charAt(i)+".png";
+					}
+				}
+				//记录当前的时间
+				var oldTime = time;
+				setInterval(function(){
+					var now = new Date();
+				    var H = now.getHours();
+					var M = now.getMinutes();
+					var S = now.getSeconds();
+					var nowTime = addZero(H)+":"+addZero(M)+":"+addZero(S);
+					for(var j = 0; j < nowTime.length; j++){
+						//判断更换imgs[0]的src
+						if(nowTime.charAt(j) == ":"){
+							var imgs = $("img",aP[j]);
+							imgs[0].src = "img/nfh.png"
+							setTimeout(function(imgs){
+								imgs[0].src = "img/fuh.png";
+							},500,imgs);
+						}else{
+							//判断让aP[j]个运动
+							if(nowTime.charAt(j) !== oldTime.charAt(j)){
+								var aImg = $("img",aP[j]);
+								aP[j].style.top = 0;
+								aImg[0].src = "img/"+oldTime.charAt(j)+".png";
+								aImg[1].src = "img/"+nowTime.charAt(j)+".png";
+								MTween(aP[j],"top",500,"-210","linear");
+							}
+						}	
+					}
+					//记录当前的时间
+					oldTime = nowTime;
+				},1000);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<div class="box">
+			<ul id="list">
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/fuh.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/fuh.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<img src="img/0.png" alt="0" />
+						<img src="img/0.png" alt="0" />
+					</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
