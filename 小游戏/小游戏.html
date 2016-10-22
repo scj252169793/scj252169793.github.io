@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				 background:#f1f1f1; 
+				 font-family:微软雅黑; 
+				 font-size:16px; 
+				 -webkit-user-select: none;   /*不能选择body下的任何文本格式的内容*/
+				 }
+			#box { 
+				width:800px; 
+				height:450px; 
+				border:1px solid #066; 
+				background:#FFF; 
+				margin:20px auto 0; 
+				position:relative; 
+				top:0;
+				left:0;
+				}
+			#fraction {
+		 		width:130px;
+				border:1px
+   				solid #066;
+    			position:relative;
+     			top:-1px;
+      			left:-152px;
+       			background:#FFC;
+        		padding:10px;
+        	}
+			#fraction p { 
+				margin:0; 
+				font-family:微软雅黑; 
+				font-size:16px; 
+				line-height:30px; 
+			}
+			
+			#alert { 
+				text-align:center; 
+			}
+			#imgBox{
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				top:0;
+				display: none;
+			}
+			#qq img{
+				position: absolute;
+				left: 0px;
+				top:-24px;	
+			}
+	</style>
+	<script src="tools1.js"></script>
+	<script src="MTween3.js"></script>
+	<script>
+		
+		window.onload = function(){
+			var btn = $("#btn");
+			var imgBox = $("#imgBox");
+			var aImg = $("#aImg");
+			var aP = $("p",$("#fraction"));
+			var box = $("#box");
+			var num = 0;
+			var num1 = 0;
+			var timer = null;
+			var onOff = false;
+			var t = 5000;
+			//设置有名函数运动
+			function fn(){
+				onOff = false;
+				if(btn.disabled == true){
+					btn.value = "游戏进行中。。。";
+				}
+				//生成一个随机数
+				var n = Math.round( Math.random() * 700 );
+				//生成一个随机数
+				var m = Math.round( Math.random() * 10 )+1;
+				imgBox.style.left = n + "px";
+				imgBox.style.top ="-24px";
+				imgBox.style.display = "block";
+				aImg.src = "qqimg/"+m+".png";
+				t = t - 500;
+				//调用MTween运动
+				MTween(imgBox,{top:425},t,"linear",function(){
+					//调用抖动函数
+					shake(box,"top",30,function(){
+						num++;
+						//计分
+						aP[1].innerHTML = "失分："+num+" 分";
+						//判断分数
+						if(num >= 3){
+							alert("挑战失败");
+							btn.disabled = false;
+							btn.value = "开始游戏";
+							imgBox.style.display = "none";
+							num = 0;
+							num1 = 0;
+							t = 5000;
+							aP[1].innerHTML = "失分："+num+" 分";
+							aP[0].innerHTML = "得分：0 分";
+						}else{
+							fn();
+						}
+					});
+					
+				});
+			}
+			//点击btn让imgBox运动
+			btn.onclick = function(){
+				btn.disabled = true;
+				fn();
+			}
+			//点击aImg让imgBox运动
+			aImg.onmousedown = function(){
+				//判断防止狂点
+				if(onOff) return;
+				onOff = true;
+				num1++;
+				//清楚定时器
+				clearInterval(imgBox.timer);
+				imgBox.timer = null;
+				aImg.src = "qqimg/bad.png";
+				//调用抖动函数
+				shake(imgBox,"left",20,function(){
+					aP[0].innerHTML = "得分："+num1+" 分";
+					//判断分数
+					if(num1 >= 3){
+						alert("挑战成功");
+						btn.disabled = false;
+						btn.value = "开始游戏";
+						imgBox.style.display = "none";
+						num1 = 0;
+						num = 0;
+						t = 5000;
+						aP[0].innerHTML = "得分："+num1+" 分";
+						aP[1].innerHTML = "失分：0 分";
+					}else{
+						fn();
+						if(num1 == 0){
+							clearInterval(imgBox.timer);
+							imgBox.style.display = "none";
+						}	
+					}
+					
+				});	
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<div id="alert">
+			<h2>你的鼠标有多快？</h2>
+			<p>游戏说明：点击“开始游戏”，随机掉下QQ表情，点中它，千万别让它掉下去！！</p>
+			<input type="button" value="开始游戏" id="btn" />
+		</div>
+		<div id="box">
+			<div id="fraction">
+			  	<p>得分：0 分</p>
+			  	<p>失分：0 分</p>
+			</div>
+			<div id="imgBox">
+				<img src="qqimg/1.png" id="aImg" />
+			</div>
+		</div>
+	</body>
+</html>
