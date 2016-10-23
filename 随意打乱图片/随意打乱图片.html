@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:606px;
+				height:575px;
+				border:20px solid red;
+				margin: 100px auto;
+			}
+			input{
+				font-size:30px;
+				margin-left:100px;
+				margin-top:10px;
+			}
+			input:hover{
+				background: yellow;
+			}
+			#list{
+				margin:0;
+				padding:0;
+				list-style: none;
+				width:606px;
+				height:500px;
+				margin-top:20px;
+			}
+			#list li{
+				float:left;
+				width:200px;
+				height:250px;
+				border:1px solid yellow;
+			}
+			#list li img{
+				width:200px;
+				height:200px;
+				/*background: red;*/
+				font:bold 80px/200px "微软雅黑";
+				color:#000;
+				text-align: center;
+			}
+			#list li span{
+				display: block;
+				width:200px;
+				height:50px;
+				background: cyan;
+				font:bold 50px/50px "微软雅黑";
+				color:#000;
+				text-align: center;
+			}
+		</style>
+		<script src="tools.js"></script>
+		<script>
+			window.onload = function(){
+				var btn = $("input");
+				var aImg = $("img");
+				var aSpan = $("span");
+				var arr = ["1","2","3","4","5","6"];
+				var arr2 = ["img/1.png","img/2.png","img/3.png","img/4.png","img/5.png","img/6.png"]
+				//设置开关
+				var onOff = false;
+				//点击btn[0]判断排序
+				btn[0].onclick = function(){
+					//判断是真 从小到大排序  否则从大到小排序
+					if(onOff){
+						//不写参数默认从小到大
+						var arr1 = arr.sort();
+						btn[0].value = "从大到小";
+						onOff = false;
+						for(var i = 0; i < aImg.length; i++){
+							aImg[i].src = arr2[parseInt(arr[i])-1];
+							aSpan[i].innerHTML = arr1[i];
+						}
+					}else{
+						//对数组从大到小排序
+						var arr1 = arr.sort(function(a,b){
+							return b - a;
+						});
+						btn[0].value = "从小到大";
+						onOff = true;
+						for(var i = 0; i < aImg.length; i++){
+							aImg[i].src = arr2[parseInt(arr[i])-1];
+							aSpan[i].innerHTML = arr1[i];
+						}
+					}
+				}
+				//点击btn[1]随机打乱数组
+				btn[1].onclick = function(){
+					//随机打乱数组
+					 var arr1 = arr.sort(function(){
+					 	return Math.random()-0.5;
+					 });
+					for(var i = 0; i < aImg.length; i++){
+							aImg[i].src = arr2[parseInt(arr[i])-1];
+							aSpan[i].innerHTML = arr1[i];
+						}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<section id="box">
+			<input type="button" value="从大到小" />
+			<input type="button" value="打乱顺序" />
+			<ol id="list">
+				<li>
+					<img src="img/1.png"></img>
+					<span>1</span>
+				</li>
+				<li>
+					<img src="img/2.png"></img>
+					<span>2</span>
+				</li>
+				<li>
+					<img src="img/3.png"></img>
+					<span>3</span>
+				</li>
+				<li>
+					<img src="img/4.png"></img>
+					<span>4</span>
+				</li>
+				<li>
+					<img src="img/5.png"></img>
+					<span>5</span>
+				</li>
+				<li>
+					<img src="img/6.png"></img>
+					<span>6</span>
+				</li>
+			</ol>
+		</section>
+	</body>
+</html>
