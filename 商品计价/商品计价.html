@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#box{
+			width:700px;
+			height:500px;
+			margin:100px auto;
+			font:30px/50px "微软雅黑";
+			background: yellow;
+		}
+		input{
+			width:40px;
+			height:40px;
+			font:bold 25px/30px "微软雅黑";
+		}
+		</style>
+		<script>
+			window.onload = function(){
+				//封装共用函数
+				function func(m){
+					var btn = m.getElementsByTagName("input");
+					var aSpan = m.getElementsByTagName("span")[0];
+					var aMark = m.getElementsByTagName("mark")[0];
+					var aStrong = m.getElementsByTagName("strong")[0];
+					var n = 0;
+					//点击btn[0]
+					btn[0].onclick = function(){
+						n--;
+						//判断
+						if(n < 0){
+							n = 0;
+						}
+						aSpan.innerHTML = n;
+						aMark.innerHTML = n*aStrong.innerHTML;
+						//调用有名函数
+						fn()
+					}
+					//点击btn[1]
+					btn[1].onclick = function(){
+						n++;
+						aSpan.innerHTML = n;
+						aMark.innerHTML = n*aStrong.innerHTML;
+						//调用有名函数
+						fn()
+					}
+				}
+				//设置有名函数
+				function fn(){
+					var aLi = document.getElementsByTagName("li");
+					var aSpan = document.getElementsByTagName("span");
+					var aMark = document.getElementsByTagName("mark");
+					var aForm = document.getElementById("form");
+					var formSpan = aForm.getElementsByTagName("span");
+					var aStrong = document.getElementsByTagName("strong");
+					var j = 0;
+					var b = 0;
+					var num = 0;
+					//for循环统计多少件和总价
+					for(var i = 0; i < aLi.length; i++){
+						j += parseInt(aSpan[i].innerHTML);
+						b += parseFloat(aMark[i].innerHTML);
+					}
+					formSpan[0].innerHTML = j;
+					formSpan[1].innerHTML = b;
+					//for循环找到单价最贵的
+					for(var k = 0; k < aStrong.length; k++){
+						//判断
+						if(parseInt(aSpan[k].innerHTML) != 0){
+							//判断取最高的单价
+							if(num < parseFloat(aStrong[k].innerHTML)){
+							num = parseFloat(aStrong[k].innerHTML);
+							}
+						}
+							
+					}
+					formSpan[2].innerHTML = num;
+				}
+				var aLi = document.getElementsByTagName("li");
+				//for循环传参
+				for(var i = 0; i < aLi.length; i++){
+					func(aLi[i]);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<section id="box">
+			<ul id="list">
+				<li>
+					<input type="button" value="-" />
+					<span>0</span>
+					<input type="button" value="+" />
+					单价：<strong>20</strong>元 &nbsp;
+					总价：<mark>0</mark> 元
+				</li>
+				<li>
+					<input type="button" value="-" />
+					<span>0</span>
+					<input type="button" value="+" />
+					单价：<strong>30</strong>元 &nbsp;
+					总价：<mark>0</mark> 元
+				</li>
+				<li>
+					<input type="button" value="-" />
+					<span>0</span>
+					<input type="button" value="+" />
+					单价：<strong>40.5</strong>元 &nbsp;
+					总价：<mark>0</mark> 元
+				</li>
+				<li>
+					<input type="button" value="-" />
+					<span>0</span>
+					<input type="button" value="+" />
+					单价：<strong>50</strong>元 &nbsp;
+					总价：<mark>0</mark> 元
+				</li>
+				<li>
+					<input type="button" value="-" />
+					<span>0</span>
+					<input type="button" value="+" />
+					单价：<strong>60</strong>元 &nbsp;
+					总价：<mark>0</mark> 元
+				</li>
+			</ul>
+			<div id="form">一共<span>0</span>件  总价<span>0</span>元  其中最贵的商品单价是<span>0</span>元</div>
+		</section>
+	</body>
+</html>
