@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<script>
+			var scale = 1;
+			if(window.devicePixelRatio){
+				scale = scale / window.devicePixelRatio;
+			}
+			document.write('<meta name="viewport" content="initial-scale='+scale+',minimum-scale='+scale+',maximum-scale='+scale+',user-scalable=no" />');
+		</script>
+		<title></title>
+		<link href="css/new_file.css" rel="stylesheet" />
+		<script>
+toSize ();
+function toSize () {
+	var html = document.getElementsByTagName("html")[0];
+	var screenW = html.getBoundingClientRect().width; 
+	html.style.fontSize = screenW/18 + "px";
+}
+window.addEventListener(
+	"orientationchange",
+	function(){
+		//横竖屏切换之后，会执行这里边的代码
+		toSize ();
+	},
+	false
+);
+window.addEventListener(
+	"resize",
+	function(){
+		//横竖屏切换之后，会执行这里边的代码
+		toSize ();
+	},
+	false
+);
+
+</script>
+	</head>
+	<body>
+		<header id="header">
+			<a href="#" class="menu icon"></a>
+			<input type="text" placeholder="搜索商品/店铺" />
+			<a href="#" class="search icon"></a>
+			<a href="#" class="user icon"></a>
+		</header>
+		<section id="box">
+			<section class="pic">
+				<a href="#">
+					<img src="img/未标题-1.png" /> 
+				</a>
+			</section>
+			<section>
+				<nav id="nav" class="clearFix">
+					<a href="#" class="indent">我的订单 <span class="icon"></span></a>
+					<a href="#" class="vehicle">购物车<span class="icon"></span></a>
+					<a href="#" class="market">天猫超市<span class="icon"></span></a>
+					<a href="#" class="international">天猫国际<span class="icon"></span></a>
+				</nav>
+			</section>
+			<section class="shop clearFix">
+				<div class="left">
+					<a href="#">
+						<img src="img/未标题-2.png" /> 
+					</a>
+				</div>
+				<div class="right">
+					<a href="#" class="BB">
+						<img src="img/未标题-3.png" /> 
+					</a>
+					<a href="#" class="cellphone">
+						<img src="img/未标题-4.png" /> 
+					</a>
+				</div>
+			</section>
+			<section class="hotspot">
+				<h2>[<span>天猫</span>热点]</h2>
+			</section>
+			<section class="exercise">
+				<span class="icon"></span>
+				<h3>精彩活动</h3>
+			</section>
+			<section class="activity clearFix">
+				<a href="#" class="activityLeft">
+					<img src="img/未标题-5.png" /> 
+					<span class="dress">-618服饰商城同款-</span>
+					<span class="cash">满299减40</span>
+				</a>
+				<a href="#" class="activityRight">
+					<img src="img/未标题-6.png" />
+					<span class="ipone">-iPhone限时钜惠-</span>
+					<span class="panic">6s仅￥4533疯抢</span>
+				</a>
+			</section>
+			<section class="exercise">
+				<span class="icon"></span>
+				<h3>精选市场</h3>
+			</section>
+			<section class="womenBox">
+				<a href="#" class="women">
+					<img src="img/未标题-7.png" /> 
+				</a>
+				<div class="cosmetic">
+					<a href="#" class="cosmetics">
+						<img src="img/未标题-8.png" /> 
+					</a>
+					<a href="#">
+						<img src="img/未标题-9.png" /> 
+					</a>
+				</div>
+			</section>
+			<ul class="clothing clearFix">
+				<li><a href="#">t恤女</a><span></span></li>
+				<li><a href="#">连衣裙</a><span></span></li>
+				<li><a href="#">衬衫女</a><span></span></li>
+				<li><a href="#">时尚套装女</a></li>
+				<li><a href="#">牛仔裤女</a><span></span></li>
+				<li><a href="#">雪纺衫</a><span></span></li>
+				<li><a href="#">真丝连衣裙</a><span></span></li>
+				<li><a href="#">牛仔短裤女</a></li>
+			</ul>
+			<section class="carnival">
+				<a href="#">
+					<img src="img/未标题-10.png" /> 
+				</a>
+			</section>
+			<section class="exercise">
+				<span class="icon"></span>
+				<h3>热门市场</h3>
+			</section>
+			<section class="marketplace">
+				<a href="#" class="clothes">
+					<span class="brand">男装大牌</span>
+					<span class="chest">百搭衣橱</span>
+					<img src="img/未标题-11.png" /> 
+				</a>
+				<a href="#" class="cellphoneBox">
+					<span class="cellphone1">电器城</span>
+					<span class="cellphone2">抢稀缺手机</span>
+					<img src="img/未标题-12.png" /> 
+				</a>
+				<a href="#" class="cateBox">
+					<span class="cate1">美食</span>
+					<span class="cate2">天天0元试吃</span>
+					<img src="img/未标题-13.png" /> 
+				</a>
+				<a href="#" class="playthingBox">
+					<span class="plaything1">母婴玩具</span>
+					<span class="plaything2">萌宝必备</span>
+					<img src="img/未标题-14.png" /> 
+				</a>
+				<a href="#" class="bedBox">
+					<span class="bed1">家纺家饰</span>
+					<span class="bed2">梦想之屋</span>
+					<img src="img/未标题-15.png" /> 
+				</a>
+				<a href="#" class="sofaBox">
+					<span class="sofa1">天猫家装</span>
+					<span class="sofa2">三年质保</span>
+					<img src="img/未标题-16.png" /> 
+				</a>
+				<a href="#" class="pajamasBox">
+					<span class="pajamas1">内衣</span>
+					<span class="pajamas2">更爱内在美</span>
+					<img src="img/未标题-17.png" /> 
+				</a>
+				<a href="#" class="sneakerBox">
+					<span class="sneaker1">运动户外</span>
+					<span class="sneaker2">明星限量款</span>
+					<img src="img/未标题-18.png" /> 
+				</a>
+			</section>
+			<section class="conjecture">
+				<span>—猜你喜欢</span>
+			</section>
+			<section class="clearFix">
+				<a href="#" class="vidiconBox">
+					<img src="img/未标题-19.png" />
+					<span class="vidicon">[热销]1080P夜视高清微型摄像机无线隐形超小摄像</span>
+					<span class="vidiconPrice">￥150.0</span>
+				</a>
+				<a href="#" class="tableBox">
+					<img src="img/未标题-20.png" />
+					<span class="table">[热销]吉祥树欧式大理石餐桌椅组合伸缩小户型高</span>
+					<span class="tablePrice">￥2879.0</span>
+				</a>
+				<a href="#" class="ALDE">
+					<img src="img/未标题-21.png" />
+					<span class="eyebrow">[热销]艾德眉卡 一字眉画眉卡画眉神器 初学者套装</span>
+					<span class="eyebrowPrice">￥26.8</span>
+				</a>
+				<a href="#" class="formalBox">
+					<img src="img/未标题-22.png" />
+					<span class="formal">[热销]2016新款时尚晚礼服宴会晚装新娘结婚敬酒</span>
+					<span class="formalPrice">￥398.0</span>
+				</a>
+				<a href="#" class="SUV">
+					<img src="img/未标题-23.png" />
+					<span class="sedan">[热销]车载充气床垫轿车 SUV 后排车中气垫床旅行</span>
+					<span class="sedanPrice">￥79.0</span>
+				</a>
+				<a href="#" class="garmentBox">
+					<img src="img/未标题-24.png" />
+					<span class="garment">[热销]暖树夏装新 原创设计百搭文艺女青年圆领宽</span>
+					<span class="garmentPrice">￥139.0</span>
+				</a>
+			</section>
+			
+			
+			
+			
+			
+		</section>
+	</body>
+</html>

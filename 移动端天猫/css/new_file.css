@@ -1,0 +1,775 @@
+html{
+	height: 100%;
+}
+
+input,
+button,
+a{
+	-webkit-tap-highlight-color: rgba(0,0,0,0); /* 去掉链接点击的时候 默认的半透明背景 */
+}
+input,
+button {
+	-webkit-appearance:none; /* 去掉IOS下 按钮的圆角 */
+}
+input{
+	outline:none;
+	border:none;
+}
+body {
+	margin:0;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+h2,
+h3,
+h4{
+	margin:0;
+}
+a {
+	text-decoration: none;
+}
+ul{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+img{
+	border:none;
+	vertical-align: top;
+}
+.clearFix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.icon{
+	background:url(../img/icon.png);
+	background-size:7.5rem 2.85rem;
+}
+
+
+
+
+
+
+
+
+
+
+#header{
+	height:2.25rem;
+	background:#085132;
+	position:relative;
+}
+#header input{
+	width:11.3rem;
+	height:1.65rem;
+	border-radius:0.08333rem;
+	margin:0.25rem 0 0 3.03333rem;
+	font:0.666rem/1.65rem "宋体";
+	padding-left:0.6rem;
+	background: #e7f3ef;
+	
+}
+.menu{
+	width:1.03333rem;
+	height:0.88rem;
+	position:absolute;
+	top:0.56667rem;
+	left:1.0rem;
+}
+.search{
+	width:0.81667rem;
+	height:0.8rem;
+	position:absolute;
+	top:0.66667rem;
+	left:13.51667rem;
+	background-position:-1.35rem 0;
+}
+.user{
+	width:1.0833333333rem;
+	height:1.2rem;
+	position:absolute;
+	top:0.43333rem;
+	left:15.9rem;
+	background-position:-2.566667rem 0;
+}
+#box{
+	position: absolute;
+	top: 2.25rem;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+}
+.pic{
+	width:18rem;
+	height:6.45rem;
+}
+.pic a img{
+	width:18rem;
+	height:6.45rem;
+}
+#nav{
+	width:18rem;
+	height:3.25rem;
+}
+#nav a{
+	float:left;
+	font:0.63333rem "宋体";
+	color:#001829;
+	padding-top:2.16667rem;
+	display:block;
+}
+.indent{
+	width:2.76667rem;
+	margin-left:1.25rem;	
+}
+.indent span{
+	width:1.61667rem;
+	height:1.58333rem;
+	margin:-2.533rem 0 0 0.6rem;
+	background-position:0 -1.26667rem;
+	display: block;
+}
+.vehicle{
+	width:2.03333rem;
+	margin-left:1.86667rem;
+}
+.vehicle span{
+	width:1.61667rem;
+	height:1.58333rem;
+	margin:-2.533rem 0 0 0.23333rem;
+	background-position:-2.0rem -1.26667rem;
+	display: block;
+}
+.market{
+	width:2.73333rem;
+	margin-left:1.88333rem;
+}
+.market span{
+	width:1.61667rem;
+	height:1.58333rem;
+	margin:-2.533rem 0 0 0.56667rem;
+	background-position:-3.91667rem -1.26667rem;
+	display: block;
+}
+.international{
+	width:2.73333rem;
+	margin-left:1.53333rem;
+}
+.international span{
+	width:1.61667rem;
+	height:1.58333rem;
+	margin:-2.533rem 0 0 0.56667rem;
+	background-position:-5.88333rem -1.26667rem;
+	display: block;
+}
+.shop{
+	height:10.05rem;
+	border-top:0.05rem solid #f7f7f7;
+	border-bottom:0.05rem solid #f7f7f7;
+}
+.left{
+	float:left;
+	width:8.4rem;
+	height:10.05rem;
+	border-right:0.05rem solid #f7f7f7;
+}
+.left a img{
+	width:8.4rem;
+	height:10.05rem;
+}
+.right{
+	float:left;
+	width:9.55rem;
+	height:10.05rem;
+	margin-right:-0.55rem;
+}
+.BB img{
+	width:9.55rem;
+	height:5.0rem;
+	vertical-align: top;
+}
+.cellphone img{
+	width:9.55rem;
+	height:5.0rem;
+	border-top:0.05rem solid #f7f7f7;
+	vertical-align: top;
+}
+.hotspot{
+	height:1.95rem;
+	border-bottom:0.45rem solid #f7f7f7;
+}
+.hotspot h2{
+	font:bold 0.7666667rem/1.95rem "宋体";
+	color:#de2421;
+	padding-left:0.55rem;
+}
+.hotspot h2 span{
+	color:#000;
+}
+.exercise{
+	height:2rem;
+	position:relative;
+}
+.exercise span{
+	width:0.3666667rem;
+	height:1.1rem;
+	position:absolute;
+	top:0.45rem;
+	left:0;
+	background-position:-4.0rem 0;
+}
+.exercise h3{
+	font:bold 0.7666667rem "宋体";
+	color:#313031;
+	padding:0.566667rem 0 0 0.45rem;
+}
+.activityLeft{
+	float:left;
+	width:8.95rem;
+}
+.activityLeft img{
+	width:8.95rem;
+	height:3.65rem;
+	vertical-align: top;
+}
+.dress{
+	width:7.23rem;
+	height:1.0rem;
+	background:#e7e7e7;
+	font:0.566667rem/1.0rem "宋体";
+	color:#393839;
+	display: block;
+	padding-left:1.72rem;
+}
+.cash{
+	width:3.33rem;
+	height:1.0rem;
+	background:#ef5d63;
+	font:0.566667rem/1.0rem "宋体";
+	color:#ffe3e7;
+	display: block;
+	padding-left:5.62rem;
+}
+.activityRight{
+	float:left;
+	width:8.9rem;
+	margin-right:-0.5rem;
+	border-left:0.15rem solid #fff;
+}
+.activityRight img{
+	width:8.9rem;
+	height:3.65rem;
+	vertical-align: top;
+}
+.ipone{
+	width:7.02rem;
+	height:1.0rem;
+	background:#e7e7e7;
+	font:0.566667rem/1.0rem "宋体";
+	color:#393839;
+	display: block;
+	padding-left:1.88rem;
+}
+.panic{
+	width:4.65rem;
+	height:1.0rem;
+	background:#e7e7e7;
+	font:0.566667rem/1.0rem "宋体";
+	color:#bd5de7;
+	display: block;
+	padding-left:4.25rem;
+}
+.womenBox{
+	height:10.05rem;
+	border:0.05rem solid #f7f7f7;
+	border-left:none;
+}
+.women{
+	float:left;
+	width:8.4rem;
+}
+.women img{
+	width:8.4rem;
+	height:10.05rem;
+}
+.cosmetic{
+	float:left;
+	width:9.516667rem;
+	height:10.05rem;
+	border-left:0.05rem solid #f7f7f7;
+	margin-right:-0.3rem;
+}
+.cosmetic a img{
+	width:9.516667rem;
+	height:5.0rem;
+	border-top:0.05rem solid #f7f7f7;
+	vertical-align: top;
+}
+.cosmetic .cosmetics img{
+	border-top:none;
+}
+.clothing{
+	height:3.82rem;
+	padding:0.48rem 0 0 0.3rem;
+}
+.clothing li a{
+	float:left;
+	width:4.3rem;
+	height:1.6rem;
+	font:0.63333rem "宋体";
+	color:#001829;
+	text-align:center;
+}
+.clothing li span{
+	float:left;
+	width:0.05rem;
+	height:0.75rem;
+	background:#949694;
+}
+.carnival{
+	height:4.5rem;
+}
+.carnival a img{
+	width:18rem;
+	height:4.5rem;
+	vertical-align:top;
+}
+.marketplace{
+	width:18rem;
+	height:14.4rem;
+	border-top:0.05rem solid #f7f7f7;
+	position:relative;
+}
+.clothes{
+	width:4.1666667rem;
+	height:7.65rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.brand{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0.45rem;
+	left:0.55rem;
+}
+.chest{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.4666667rem;
+	left:0.55rem;
+}
+.clothes img{
+	width:2.05rem;
+	height:4.233333rem;
+	position:absolute;
+	top:2.73rem;
+	left:1.217rem;
+}
+.cellphoneBox{
+	width:4.666667rem;
+	height:7.65rem;
+	position:absolute;
+	top:0;
+	left:4.1666667rem;
+}
+.cellphone1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0.45rem;
+	left:0.9166667rem;
+}
+.cellphone2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.4666667rem;
+	left:0.8666667rem;
+}
+.cellphoneBox img{
+	width:2.83333rem;
+	height:3.516667rem;
+	position:absolute;
+	top:2.966667rem;
+	left:1.2rem;
+}
+.cateBox{
+	width:4.666667rem;
+	height:7.65rem;
+	position:absolute;
+	top:0;
+	left:8.83333rem;
+}
+.cate1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0.45rem;
+	left:0.7166667rem;
+}
+.cate2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.4666667rem;
+	left:0.7166667rem;
+}
+.cateBox img{
+	width:3.25rem;
+	height:3.116667rem;
+	position:absolute;
+	top:3.25rem;
+	left:0.85rem;
+}
+.playthingBox{
+	width:4.1666667rem;
+	height:7.65rem;
+	position:absolute;
+	top:0;
+	left:13.5rem;
+}
+.plaything1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0.45rem;
+	left:0.5rem;
+}
+.plaything2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.4666667rem;
+	left:0.5rem;
+}
+.playthingBox img{
+	width:3.583333rem;
+	height:2.816667rem;
+	position:absolute;
+	top:3.25rem;
+	left:0.5rem;
+}
+.bedBox{
+	width:4.1666667rem;
+	height:6.733333rem;
+	position:absolute;
+	top:7.63333rem;
+	left:0;
+}
+.bed1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0;
+	left:0.53333rem;
+}
+.bed2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.02rem;
+	left:0.53333rem;
+}
+.bedBox img{
+	width:3.566667rem;
+	height:2.616667rem;
+	position:absolute;
+	top:3.03333rem;
+	left:0.46667rem;
+}
+.sofaBox{
+	width:4.666667rem;
+	height:6.733333rem;
+	position:absolute;
+	top:7.63333rem;
+	left:4.166667rem;
+}
+.sofa1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0;
+	left:0.866667rem;
+}
+.sofa2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.02rem;
+	left:0.866667rem;
+}
+.sofaBox img{
+	width:3.166667rem;
+	height:3.45rem;
+	position:absolute;
+	top:2.26rem;
+	left:1.03333rem;
+}
+.pajamasBox{
+	width:4.666667rem;
+	height:6.733333rem;
+	position:absolute;
+	top:7.63333rem;
+	left:8.83333rem;
+}
+.pajamas1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0;
+	left:0.72rem;
+}
+.pajamas2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.02rem;
+	left:0.72rem;
+}
+.pajamasBox img{
+	width:2.666667rem;
+	height:4.216667rem;
+	position:absolute;
+	top:2.3rem;
+	left:1.08333rem;
+}
+.sneakerBox{
+	width:4.1666667rem;
+	height:6.733333rem;
+	position:absolute;
+	top:7.63333rem;
+	left:13.5rem;
+}
+.sneaker1{
+	font:bold 0.666667rem "宋体";
+	color:#001829;
+	position:absolute;
+	top:0;
+	left:0.516667rem;
+}
+.sneaker2{
+	font:0.566667rem "宋体";
+	color:#c6c3c6;
+	position:absolute;
+	top:1.02rem;
+	left:0.566667rem;
+}
+.sneakerBox img{
+	width:3.233333rem;
+	height:1.65rem;
+	position:absolute;
+	top:3.516667rem;
+	left:0.666667rem;
+}
+.conjecture{
+	height:2.15rem;
+	background:#f7f7f7;
+}
+.conjecture span{
+	font:bold 0.66667rem/2.15rem "宋体";
+	color:#9c9a9c;
+	display: block;
+	padding-left:6.7rem;
+}
+.vidiconBox{
+	float:left;
+	height:12.33333rem;
+	width:8.866667rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	position:relative;
+	display: block;
+	margin-top:0.05rem;
+}
+.vidiconBox img{
+	height:8.866667rem;
+	width:8.866667rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.vidicon{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.vidiconPrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
+.tableBox{
+	float:left;
+	height:12.33333rem;
+	width:8.85rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	position:relative;
+	display: block;
+	margin-top:0.05rem;
+	margin-right:-0.5rem;
+}
+.tableBox img{
+	height:8.866667rem;
+	width:8.85rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.table{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.tablePrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
+.ALDE{
+	float:left;
+	height:12.33333rem;
+	width:8.85rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	border-top:none;
+	position:relative;
+	display: block;
+}
+.ALDE img{
+	height:8.9rem;
+	width:8.85rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.eyebrow{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.eyebrowPrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
+.formalBox{
+	float:left;
+	height:12.33333rem;
+	width:8.85rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	border-top:none;
+	position:relative;
+	display: block;
+	margin-right:-0.5rem;
+}
+.formalBox img{
+	height:8.9rem;
+	width:8.85rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.formal{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.formalPrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
+.SUV{
+	float:left;
+	height:12.33333rem;
+	width:8.85rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	border-top:none;
+	position:relative;
+	display: block;
+}
+.SUV img{
+	height:8.9rem;
+	width:8.85rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.sedan{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.sedanPrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
+.garmentBox{
+	float:left;
+	height:12.33333rem;
+	width:8.85rem;
+	border:0.136667rem solid #f7f7f7;
+	border-left:none;
+	border-top:none;
+	position:relative;
+	display: block;
+	margin-right:-0.5rem;
+}
+.garmentBox img{
+	height:8.9rem;
+	width:8.85rem;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.garment{
+	width:7.5rem;
+	font:0.633333rem "宋体";
+	color:#636563;
+	position:absolute;
+	top:9.45rem;
+	left:0.45rem;
+}
+.garmentPrice{
+	font:0.633333rem "宋体";
+	color:#de2421;
+	position:absolute;
+	top:11.35rem;
+	left:0.41666667rem;
+}
