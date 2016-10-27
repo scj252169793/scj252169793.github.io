@@ -1,0 +1,45 @@
+@media only all and (max-width:1232px) {
+	.menu{
+		display: block;
+	}
+	.nav,
+	.susan,
+	.trigonometry,
+	.recommendBox{
+		display: none;
+	}
+	.navigation{
+		width:600px;
+		margin:0 auto;
+	}
+	.ul,
+	.logo,
+	.pageBox{
+		width:880px;
+		margin:0 auto;
+	}
+	.logo{
+		margin-top:40px;
+	}
+}
+@media only all and (max-width:950px) {
+	.ul,
+	.logo,
+	.pageBox{
+		width:580px;
+		margin:0 auto;
+	}
+	.logo{
+		margin-top:40px;
+	}
+	.chaining{
+		width:490px;
+	}
+	.chainingBox{
+		width:580px;
+		margin:0 auto;
+	}
+	.checking span{
+		top:40px;
+	}
+}
