@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box,#box1{
+				width:100px;
+				height:100px;
+				background: red;
+				position:absolute;
+				top:50px;
+				left:0;
+			}
+			#box1{
+				top:180px;
+				left:50px;
+				background:yellow ;
+			}
+		</style>
+		<script>
+			
+			window.onload = function(){
+				var timer = null;
+				//设置有名函数(形参)
+				function fn(obj){
+					var num = parseInt(getComputedStyle(obj).left);
+					clearInterval(obj.timer);
+					//设置定时器
+					    obj.timer = setInterval(function(){
+							num += 10;
+							if(num >= 1500){
+								clearInterval(obj.timer);
+								num = 1500;
+							}
+							obj.style.left = num+"px";
+						},16);
+				}
+				var box = document.getElementById("box");
+				var btn1 = document.getElementById("btn1");
+				var btn2 = document.getElementById("btn2");
+				var btn3 = document.getElementById("btn3");
+				var btn4 = document.getElementById("btn4");
+				btn1.onclick = function(){
+					fn(box);
+				}
+				btn2.onclick = function(){
+					clearInterval(box.timer);
+				}
+				btn3.onclick = function(){
+					fn(box1);
+				}
+				btn4.onclick = function(){
+					clearInterval(box1.timer);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="红走起" id="btn1"/>
+		<input type="button" value="红停止" id="btn2"/>
+		<div id="box"></div>
+		<input type="button" value="黄走起" id="btn3"/>
+		<input type="button" value="黄停止" id="btn4"/>
+		<div id="box1"></div>
+	</body>
+</html>
