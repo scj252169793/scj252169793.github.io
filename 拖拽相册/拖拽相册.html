@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html onselectstart="return false">
+<head>
+<meta charset="utf-8">
+<title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            background: #000;
+        }
+        #wrap{
+            width:120px;
+            height:180px;
+            margin:150px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(800px) rotateY(0deg) rotateX(-10deg);
+        }
+        #wrap img{
+            width:120px;
+            height:180px;
+            position: absolute;
+            border-radius: 3px;
+            box-shadow: 0 0 5px #fff;
+            -webkit-box-reflect:below 5px -webkit-linear-gradient(transparent,transparent 60%,rgba(0,0,0,.2));/*倒影为何没效果倒影为何没效果是 求大神*/
+        }
+    </style>
+    
+    <script type="text/javascript">
+        window.onload = function(){
+            
+            var oWrap = document.getElementById("wrap");
+            var oImg = oWrap.getElementsByTagName("img");
+            var Deg = 360 / oImg.length;
+            var x, y, x_, y_, xN, yN;
+            var roX = -10, roY = 0;
+            
+            for(var i = 0; i < oImg.length; i++){
+                oImg[i].style.transform = 'rotateY('+ Deg * i + 'deg) translateZ(350px)';
+                oImg[i].ondragstart = function(){
+                    return false;
+                }
+            }
+            
+            document.onmousedown = function(ev){
+                ev = ev || window.event;
+                x_ = ev.clientX;
+                y_ = ev.clientY;
+                this.onmousemove = function(ev){
+                    ev = ev || window.event;
+                    x = ev.clientX;
+                    y = ev.clientY;
+                    
+                    xN = x - x_;
+                    yN = y - y_;
+                    
+                    roY += xN * 0.2;
+                    roX -= yN * 0.1;
+                    
+                    oWrap.style.transform = 'perspective(800px) rotateX('+ roX+'deg) rotateY('+ roY+'deg)';
+                    
+                   
+                    
+                    x_ = ev.clientX;
+                    y_ = ev.clientY;
+                }
+                
+                this.onmouseup = function(){
+                    this.onmousemove = null;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <img src="img/1.jpg">
+        <img src="img/2.jpg">
+        <img src="img/3.jpg">
+        <img src="img/4.jpg">
+        <img src="img/5.jpg">
+        <img src="img/6.jpg">
+        <img src="img/7.jpg">
+        <img src="img/8.jpg">
+        <img src="img/9.jpg">
+        <img src="img/10.jpg">
+        <img src="img/11.jpg">
+    </div>
+</body>
+</html>
