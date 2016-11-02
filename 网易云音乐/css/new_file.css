@@ -1,0 +1,747 @@
+body,
+h1,
+h3,
+h4,
+h5,
+p{
+	margin:0;
+}
+img{
+	border:none;
+	text-align:top;
+}
+a{
+	text-decoration:none ;
+}
+strong{
+	font-weight:normal;
+}
+ul,
+ol{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.clearFix:after {
+		content: "";
+		display: block;
+		clear: both;
+}
+.clearFix{
+	zoom:1;
+}
+a:hover{
+	text-decoration:underline;
+}
+#header{
+	height:70px;
+	background:url(../pic/bj.png);
+}
+.wall{
+	width:985px;
+	height:70px;
+	margin:0 auto;
+}
+.logo{
+	float:left;
+	width:162px;
+	height:32px;
+	padding-top:21px;
+	margin-left: -7px;
+}
+.nav{
+	float:left;
+	width:400px;
+	padding-left:15px;
+	padding-top:6px;
+	
+}
+.nav a{
+	float:left;
+	font:14px/62px "宋体";
+	color:#ccc;
+	padding:0 18px 0 17px;
+	position:relative;
+}
+.vertical{
+	float:left;
+	padding-top:21px;
+	
+}
+.input{
+	border-radius:14px;
+	width:180px;
+	height:26px;
+	padding-left:30px;
+	background:#eaeaea;
+	color:#9b9b9b;
+	margin-top:20px;
+	margin-left:110px;
+	outline:none;
+}
+.form{
+	float:left;
+	width:392px;
+	position:relative;
+}
+.magnifying{
+	position:absolute;
+	left:122px;
+	top:35px;
+	width:12px;
+	height:12px;
+	background:url(../pic/spiritMap.png) no-repeat;
+}
+.drop{
+	border:none;
+	background:#282828 ;
+	margin-top:33px;
+	margin-left:14px;
+	color:#787878;
+	font:12px "宋体";
+}
+.HOT{
+	position:relative;
+	width:80px;
+}
+.HOT strong{
+	position:absolute;
+	top:18px;
+	width:26px;
+	height:18px;
+	background:url(../pic/spiritMap.png) no-repeat -21px 0;
+}
+.triangle{
+	width:15px;
+	height:8px;
+	position:absolute;
+	top:57px;
+	left:40%;
+	display:none;
+	background:url(../pic/spiritMap.png) no-repeat -57px 0;
+}
+.nav a:hover .triangle{
+	display: block;
+}
+.nav a:hover{
+	background:#232222;
+}
+#two{
+	height:35px;
+	background:url(../pic/bj.png) 0 -78px;
+}
+.nav2{
+	width:802px;
+	margin:0 auto;
+	padding-left:153px;
+}
+.nav2 a{
+	float:left;
+	font:12px "宋体";
+	color:#fff;
+	margin:5px 25px 0;
+	padding:5px 10px 3px;
+}
+.nav2 a:hover{
+	border-radius:12px;
+	background:#8e0303;
+}
+#specialCoiumn{
+	position:relative;
+	width:1003px;
+	height:336px;
+	margin:0 auto;
+}
+#specialCoiumn div{
+	width:1003px;
+	height:336px;
+	position:absolute;
+	top:50%;
+	right:0;
+	margin-top:-168px;
+}
+#specialCoiumn .client{
+	width:215px;
+	height:56px;
+	background:url(../pic/spiritMap.png) no-repeat 0 -25px;
+	position:absolute;
+	top:212px;
+	right:38px;
+}
+.dot{
+	width:210px;
+	height:8px;
+	position:absolute;
+	left:306px;
+	bottom:12px;
+}
+.dot a{
+	float:left;
+	width:6px;
+	height:6px;
+	border:1px solid #000;
+	border-radius:50%;
+	margin:0 9px;
+}
+.dot a:hover{
+	background:red;
+}
+#box{
+	position:relative;
+	background:#f5f5f5;
+}
+.TOP{
+	width:47px;
+	height:42px;
+	position:absolute;
+	top:50%;
+	left:78%;
+	background:url(../pic/spiritMap.png) no-repeat -356px 0;
+}
+.music{
+	width:993px;
+	margin:0 auto;
+	background:#fff;
+}
+#left{
+	float:left;
+	width:730px;
+	height:1500px;
+	background:#fff;
+	border-left:1px solid #d3d3d3;
+	padding:0 20px 0 18px;
+}
+#recommend{
+	float:left;
+	border-bottom:2px solid #c10d0c;
+}
+#recommend h3{
+	float:left;
+	position:relative;
+	width:87px;
+	font:20px/40px "宋体";
+	color:#333;
+	padding-top:14px;
+	padding-left:35px;
+}
+#recommend h3 span{
+	width:14px;
+	height:14px;
+	position:absolute;
+	left:9px;
+	top:27px;
+	background:url(../pic/spiritMap.png) no-repeat -82px 0;
+}
+#recommend nav{
+	float:left;
+	width:515px;
+	padding-top:17px;
+}
+#recommend nav a{
+	float:left;
+	font:12px/36px "宋体";
+	color:#666;
+	padding:0 12px;
+}
+#recommend nav span{
+	float:left;
+	color:#cecece;
+	padding-top:9px;
+}
+.more{
+	float:left;
+	width:40px;
+	position:relative;
+	font:12px/32px "宋体";
+	color:#666;
+	padding-top:21px;
+	padding-right:13px;
+}
+.more a{
+	color:#666;
+	
+}
+.arrows{
+	width:8px;
+	height:6px;
+	position:absolute;
+	top:34px;
+	left:32px;
+	background:url(../pic/spiritMap.png) no-repeat -107px 0;
+
+}
+.mv{
+	/*width:728px;*/
+
+}
+.broadcastingStation{
+	float:left;
+	width:140px;
+	margin:20px 42px 0 0;
+	position:relative;
+}
+.lucency{
+	width:140px;
+	height:27px;
+	background:#000;
+	position:absolute;
+	left:0;
+	top:113px;
+	opacity:.5;
+}
+.player{
+	width:17px;
+	height:17px;
+	background:url(../pic/spiritMap.png) no-repeat -146px 0;
+	position:absolute;
+	top:118px;
+	right:10px;
+}
+.listen{
+	width:14px;
+	height:12px;
+	background:url(../pic/spiritMap.png) no-repeat -123px 0;
+	position:absolute;
+	top:122px;
+	left:10px;
+}
+.number{
+	position:absolute;
+	left:28px;
+	top:118px;
+	color:#ccc;
+}
+.brief{
+	font:14px/36px "宋体";
+	color:#000;
+	margin-bottom:30px;
+}
+.mouthWash{
+	width:689px;
+	height:75px;
+	margin-top:30px;
+}
+.beginner{
+	width:687px;
+	height:186px;
+	border:1px solid #d3d3d3;
+	margin-top:20px;
+	position:relative;
+}
+.leftIcon{
+	width:8px;
+	height:15px;
+	position:absolute;
+	top:76px;
+	left:8px;
+	background:url(../pic/spiritMap.png) no-repeat -346px -59px;
+}
+.rightIcon{
+	width:8px;
+	height:15px;
+	position:absolute;
+	top:76px;
+	right:8px;
+	background:url(../pic/spiritMap.png) no-repeat -369px -59px;
+}
+.beginnerMusic{
+	width:671px;
+	height:154px;
+	background:#f5f5f5;
+	border:1px solid #fff;
+	padding:30px 0 0 14px;
+}
+.beginnerMusic li{
+	float:left;
+	width:116px;
+	height:109px;
+	margin-left:14px;
+	position:relative;
+}
+.beginnerButton{
+	width:17px;
+	height:17px;
+	position:absolute;
+	bottom:12px;
+	right:19px;
+	background:url(../pic/spiritMap.png) -501px 0;
+	display:none;
+}
+.beginnerMusic li:hover .beginnerButton{
+	display:block;
+}
+.beginnerMusic img{
+	width:116px;
+	height:109px;
+}
+.beginnerMusic p{
+	font:12px "宋体";
+	color:#000;
+	margin-left:14px;
+}
+.beginnerMusic .anme{
+	font-weight:24px;
+	color:#666;
+}
+.newProduct{
+	width:690px;
+	height:68px;
+	border-bottom:2px solid #c10d0c;
+}
+.newProduct h4{
+	float:left;
+	width:110px;
+	font:20px/38px "宋体";
+	color:#404040;
+	padding-top:31px;
+	padding-left:35px;
+}
+.newProduct a{
+	float:left;
+	width:40px;
+	position:relative;
+	font:12px/32px "宋体";
+	padding:36px 0 0 500px;
+}
+.newProduct a .arrows{
+	position:absolute;
+	left:528px;
+	top:49px;
+}
+#announcement{
+	padding-top:2px;
+}
+#rankingList{
+	width:688px;
+	height:470px;
+	border:1px solid #d3d3d3;
+	border-left:none;
+	margin-top:20px;
+}
+#player{
+	float:left;
+	width:229px;
+	border-left:1px solid #d3d3d3;
+	padding-top:18px;
+	background:#f4f4f4;
+	margin-top:20px;
+}
+
+#player img{
+	float:left;
+	width:80px;
+	height:80px;
+	margin-left:18px;
+}
+.title{
+	height:100px;
+}
+.titleBg{
+	float:left;
+	width:100px;
+	padding-left:10px;
+}
+.titleBg h5{
+	font:bold 14px/30px "宋体";
+	color:#333;
+}
+.iconPlay{
+	width:22px;
+	height:22px;
+	display:inline-block;
+	background:url(../pic/spiritMap.png) no-repeat -173px 0;
+}
+.iconCollect{
+	width:21px;
+	height:20px;
+	display:inline-block;
+	background:url(../pic/spiritMap.png) no-repeat -205px 0;
+}
+.songname{
+	/*width:228px;*/
+}
+.songname li a{
+    font:12px/32px "宋体";
+    color:#000;
+}
+.odd{
+	background:#e8e8e8;
+	position:relative;
+}
+.even{
+	position:relative;
+}
+.iconIco{
+	width:66px;
+	height:18px;
+	position:absolute;
+	top:7px;
+	left:130px;
+	display:none;
+}
+.iconIcoPlay{
+	width:17px;
+	height:17px;
+	position:absolute;
+	top:0;
+	left:0;
+	background:url(../pic/spiritMap.png) no-repeat -501px 0;
+}
+.iconIcoAdd{
+	width:13px;
+	height:13px;
+	position:absolute;
+	top:2px;
+	left:27px;
+	background:url(../pic/spiritMap.png) no-repeat -529px 0;
+}
+.iconIcoFile{
+	width:16px;
+	height:14px;
+	position:absolute;
+	top:1px;
+	right:0;
+	background:url(../pic/spiritMap.png) no-repeat -558px 0;
+}
+.odd:hover .iconIco{
+	display:block;
+}
+.even:hover .iconIco{
+	display:block;
+}
+.songname span{
+	padding-left:30px;
+	padding-right:4px;
+	color:#666;
+}
+.songname .red{
+	color:#c41c1b;
+}
+.examine{
+	font:12px/32px "宋体";
+	background:#e8e8e8;
+	display:block;
+	padding-left:145px;
+}
+.examine a{
+	color:#000;
+}
+
+
+
+
+
+
+#right{
+	float:left;
+	width:250px;
+	height:1500px;
+	border-right:1px solid #d3d3d3;
+	border-left:1px solid #d3d3d3;
+	margin-left:-42px;
+	box-shadow:15px 0 0 0 #f5f5f5;
+}
+.register{
+	width:250px;
+	height:108px;
+	border-bottom:1px solid #b1b1b1;
+}
+.register p{
+	width:210px;
+	margin:16px auto;
+	font:12px/22px "宋体";
+	color:#666;
+}
+.register a{
+	display: block;
+	width:250px;
+	height:40px;
+}
+.register a span{
+	width:100px;
+	height:31px;
+	display: block;
+	margin-left:74px;
+	background:url(../pic/spiritMap.png) no-repeat -226px -51px;
+	
+}
+.singer{
+	width:210px;
+	height:40px;
+	border-bottom:1px solid #ccc;
+	margin-left:20px;
+	/*margin-bottom:2px;*/
+}
+.singer p{
+	float:left;
+	width:50px;
+	font:bold 12px/30px "宋体";
+	color:#333;
+	padding-top:10px;
+}
+.singer a{
+	float:left;
+	width:60px;
+	font:bold 12px/30px "宋体";
+	color:#333;
+	padding-top:10px;
+	padding-left:100px;
+}
+.musician{
+	padding-top:5px;
+}
+.individual{
+	width:210px;
+	height:62px;
+	background:url(../pic/spiritMap.png) no-repeat 0 -93px;
+	margin-left:20px;
+	margin-top:14px;
+}
+.individual span{
+	font:bold 14px/32px "宋体";
+	color:#333;
+	padding-left:76px;
+}
+.individual p{
+	font:12px/22px "宋体";
+	color:#666;
+	padding-left:76px;
+}
+.applyFor{
+	width:208px;
+	height:28px;
+	border:1px solid #c4c4c4;
+	margin:14px 0 0 20px;
+}
+.applyFor:hover{
+	background:#ccc;
+}
+.applyFor a{
+	font:bold 12px/26px "宋体";
+	color:#333;
+	padding:2px 0 0 46px;
+}
+.DJ{
+	width:210px;
+	height:54px;
+	border-bottom:1px solid #ccc;
+	margin-left:20px;
+}
+.DJ span{
+	font:bold 12px/30px "宋体";
+	color:#333;
+	padding-top:24px;
+	display:block;
+}
+.compere{
+	padding-left:20px;
+	width:160px;
+	padding-top:10px;
+}
+.compere li{
+	position:relative;
+}
+.peak{
+	width:40px;
+	height:40px;
+	position:absolute;
+	left:0;
+	top:9px;
+	background:url(../pic/spiritMap.png) no-repeat -416px 0;
+}
+.compere li a{
+	font:12px/30px "宋体";
+	color:#000;
+	padding-left:50px;
+	padding-top:7px;
+	display:block;
+	position:relative;
+}
+.sign{
+	width:12px;
+	height:12px;
+	position:absolute;
+	top:15px;
+	left:76px;
+	background:url(../pic/spiritMap.png) no-repeat -239px 0;
+}
+.compere p{
+	font:12px "宋体";
+	color:#666;
+	padding-left:50px;
+}
+.footer{
+	border-top:1px solid #d5d5d5;
+	background:#f9f9f9;
+}
+.footerMusic{
+	width:982px;
+	height:123px;
+	margin:0 auto;
+}
+.independentMusic{
+	float:left;
+	width:188px;
+	padding-top:24px;
+	padding-left:46px;
+	position:relative;
+}
+.lightPic{
+	width:37px;
+	height:37px;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background:url(../pic/spiritMap.png) no-repeat -256px 0;
+}
+.independentMusic a{
+	font:12px/32px "宋体";
+	color:#666;
+	
+}
+.independentMusic p{
+	font:12px "宋体";
+	color:#999;
+}
+#musicSpecial{
+	margin-left:67px;
+}
+#musicSpecial span{
+	width:33px;
+	height:36px;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	background:url(../pic/spiritMap.png) no-repeat -311px 0;
+}
+.netease{
+	float:left;
+	width:382px;
+	padding-left:58px;
+	padding-top:24px;
+}
+.netease span a{
+	font:12px/32px "宋体";
+	color:#9b9b9b;
+	
+}
+.netease p{
+	font:12px "宋体";
+	color:#9b9b9b;
+}
+.netease p a{
+	width:50px;
+	height:20px;
+	color:#9b9b9b;
+	padding-left:94px;
+	display:inline-block;
+	position:relative;
+}
+.pen{
+	width:19px;
+	height:16px;
+	position:absolute;
+	top:0px;
+	left:69px;
+	background:url(../pic/spiritMap.png) no-repeat -469px 0;
+}
